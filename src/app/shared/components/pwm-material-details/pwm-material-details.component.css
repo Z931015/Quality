@@ -1,0 +1,180 @@
+/*Start--to avoid blue-color while sorting */
+
+:host>>>.p-datatable .p-sortable-column.p-highlight {
+    color: black;
+    background: transparent;
+}
+
+:host>>>.p-datatable .p-sortable-column:hover {
+    color: black;
+    border-color: transparent;
+}
+
+:host>>>.p-datatable .p-sortable-column .p-sortable-column-icon {
+    color: transparent;
+    margin-left: 0.5rem;
+}
+
+:host>>>.p-datatable .p-sortable-column.p-highlight {
+    background: transparent;
+    color: black;
+}
+
+:host>>>.p-datatable .p-sortable-column.p-highlight .p-sortable-column-icon {
+    color: black;
+}
+
+:host>>>.p-datatable .p-sortable-column {
+    outline-color: transparent;
+}
+
+:host>>>.p-datatable .p-sortable-column.p-highlight:hover {
+    background: transparent;
+    color: black;
+}
+
+:host>>>.p-datatable .p-sortable-column.p-highlight:hover .p-sortable-column-icon {
+    color: black;
+}
+
+:host>>>.p-datatable .p-sortable-column:focus {
+    box-shadow: inset 0 0 0 0.2rem transparent;
+    outline: 0 none;
+}
+
+:host>>>.p-datatable .p-sortable-column:not(.p-highlight):hover {
+    background: transparent;
+}
+
+/*End-- to avoid blue-color while sorting */
+
+:host>>>.p-datatable .p-datatable-thead>tr>th {
+    background: #fff;
+    vertical-align: super;
+    white-space: nowrap;
+    font-family: 'Verdana' !important;
+    font-size: 15px !important;
+}
+
+:host>>>.p-datatable .p-datatable-tbody>tr>td:last-child {
+    text-align: left !important;
+}
+
+:host>>>.p-datatable .p-datatable-tbody>tr>td:first-child {
+    vertical-align: middle;
+}
+
+:host>>>.p-datatable .p-datatable-tbody>tr>td {
+    text-align: left;
+    border-width: 1px;
+    font-size: 12px;
+    font-family: 'Verdana' !important;
+    border-bottom: 1px solid #c8c8c8 !important;
+    padding: 0.3rem 0.3em;
+}
+
+:host>>>.p-datatable .p-datatable-thead>tr>th:last-child {
+    text-align: left !important;
+}
+
+:host>>>.p-datatable .p-datatable-header {
+    background: none;
+    border: 0px solid #ffff;
+}
+
+:host>>>.p-datatable .p-datatable-thead>tr>th {
+    background: #fff;
+    vertical-align: super;
+    word-wrap: break-word;
+    font-family: 'Verdana' !important;
+    font-size: 11px !important;
+    /* padding: 6px 3px 7px 5px !important; */
+}
+
+:host>>>.p-datatable .p-datatable-header {
+    background: none;
+    /* color: #333333; */
+    border: 0px solid #ffff;
+}
+
+:host>>>.p-datatable table {
+    border: 0.1rem solid rgb(105, 120, 130);
+}
+
+:host>>>.p-datatable .p-datatable-tbody>tr>td {
+    text-align: left;
+    border: 1px solid #c8c8c8;
+    border-width: 1px;
+    /* padding: 1rem 1em; */
+}
+
+:host>>>.card {
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0);
+}
+
+:host>>>div.p-button.p-component.p-ripple.p-highlight {
+    background: rgb(255, 247, 240);
+    color: rgb(244, 156, 0);
+    border-bottom: 4px solid rgb(244, 156, 0);
+    border-top-color: rgb(236, 236, 236);
+    border-left-color: rgb(236, 236, 236);
+    border-right-color: rgb(236, 236, 236);
+    padding: 8px 10px 10px 10px;
+    box-shadow: 2px 3px rgb(236, 236, 236);
+    font-size: 12px;
+    width: 10rem;
+}
+
+:host>>>div.p-button.p-component.p-ripple {
+    background: rgb(255, 255, 255);
+    color: black;
+    box-shadow: 0 0 2px 2px rgb(236, 236, 236);
+    border: none;
+    font-size: 12px;
+    width: 10rem;
+    padding: 10px;
+}
+
+:host>>>.p-button:focus {
+    outline: 0 none;
+    outline-offset: 0;
+    box-shadow: none;
+}
+
+:host>>>.p-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pwm-main-content {
+    margin-top: 2%;
+}
+
+.coil-header {
+    font-weight: bold;
+}
+
+.float-right {
+    float: right;
+}
+
+.summary {
+    text-align: center;
+    font-size: small;
+    font-weight: 600;
+}
+
+:host>>>.pi-sort-alt:before {
+    /* content: "\e99e"; */
+    content: url(../../../../assets/images/sort-icon.jpg)!important;
+}
+
+:host>>>p-sorticon {
+    vertical-align: bottom;
+    text-align-last: justify;
+}
+
+:host>>>.p-sortable-column-icon .pi .pi-fw .pi-sort-alt {
+    font-weight: smaller !important;
+}

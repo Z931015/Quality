@@ -1,0 +1,160 @@
+.pageHeader {
+    font-size: 1rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 600;
+}
+
+label {
+    font-size: 12px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 600;
+}
+
+.mandatory {
+  color: red !important;
+  font-size: 11px !important;
+  font-family: 'Verdana';
+  margin-left: 3px;
+}
+
+.btn-style{
+  background-color: #f49c00 !important;
+	color: white !important;
+ }
+:host>>>  thead, tbody, tr, td, th {
+    font-size: 11px;
+    height: 30px !important;
+  }
+
+:host >>> .p-md-3 {
+    padding: .5rem !important;
+}
+
+:host >>>.p-datatable table {
+    border: .13rem solid #697882;
+}
+
+:host >>> .p-mt-3 {
+    margin: 1.2rem !important;
+}
+
+:host>>>.p-datatable .p-datatable-thead>tr>th {
+    padding: 2px;
+    text-align: left;
+    background: #fff;
+    vertical-align: initial;
+    font-family: 'Verdana' !important;
+    font-size: 11px !important;
+    height: 30px;
+    border: 1px solid #c8c8c8 !important;
+    border-bottom:.13rem solid #697882 !important;
+}
+
+:host>>>.pi-sort-alt:before {
+  /* content: "\e99e"; */
+  content: url(../../../assets/images/sort-icon.jpg)!important;
+}
+
+:host>>>.p-datatable .p-datatable-tbody>tr>td {
+    text-align: left;
+    border: 1px solid #c8c8c8 !important;
+    font-size: 11px;
+    border-bottom: 1px solid #c8c8c8 !important;
+    border-width: 1px;
+    white-space: nowrap;
+    padding: 1px 5px  2px!important;
+}
+:host>>>.p-dialog .p-dialog-header {
+  background: #f49c00;
+  color: white;
+  padding: 0.571rem 1rem;
+}
+
+:host>>>.p-dialog .p-dialog-header .p-dialog-header-icon {
+  color: white;
+}
+
+:host>>>.p-dialog .p-dialog-content {
+  background: #ffffff;
+  color: #333333;
+  padding: 0.571rem 1rem;
+}
+:host >>>.p-dialog.p-confirm-dialog .p-confirm-dialog-message {
+  margin-left: 1rem;
+  font-size: 11px;
+  font-family: verdana;
+  font-weight: 600;
+  margin-right: 1rem;
+}
+:host >>>.p-dialog {
+  -ms-flex-direction: column;
+  -ms-transform: scale(1);
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+  max-height: 96%;
+  position: relative;
+  transform: scale(1);
+}
+
+.btn-yes {
+  border: 1px solid #f49c00 !important;
+  background: white !important;
+  color: #f49c00 !important;
+  font-weight: 600;
+  height: 26px;
+  border-radius: 4px;
+  font-size: 12px;
+  width: 85px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.btn-no {
+  border: 1px solid white !important;
+  background: #f49c00 !important;
+  color: white !important;
+  font-weight: 600;
+  height: 26px;
+  border-radius: 4px;
+  font-size: 12px;
+  width: 85px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+:host>>>.p-disabled, .p-component:disabled {
+  opacity: 1.5;
+  background-color: #c0c0c040;
+}
+:host >>> .p-dialog-content {
+  overflow-y: unset;
+}
+/* .pdfDocument {
+  border: 1px solid black !important;
+  background: lightgray;
+}
+pdf-viewer {
+  display: block;
+  padding: 3%;
+}
+:host >>> .ng2-pdf-viewer-container{
+ width: 43% !important;
+ height: 86% !important;
+}
+
+.zoom:hover  {
+cursor: pointer;
+} */
+.zoom:hover  {
+  cursor: pointer;
+  }
+.pdfDocument {
+  border: 1px solid black !important;
+  background: lightgray;
+  padding: 1%;
+}
+
+pdf-viewer {
+  display: block;
+  height: fit-content;
+  max-width: 500px;
+}
+

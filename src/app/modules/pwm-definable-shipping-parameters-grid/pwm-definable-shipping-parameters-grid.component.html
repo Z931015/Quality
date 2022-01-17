@@ -1,0 +1,93 @@
+<div class="container-fluid p-mt-2">
+    <div class="p-fluid p-md-12 pageHeader">
+        Definable Shipping Parameters
+    </div>
+
+    <div *ngIf="success || error" class="p-md-12"
+        style="font-family: Verdana, Geneva, Tahoma, sans-serif;font-weight: bold;">
+        <p-message severity="success" text={{message}} *ngIf="success"></p-message>
+        <p-message severity="error" text={{message}} *ngIf="error"></p-message>
+    </div>
+
+    <div class="p-fluid p-formgrid p-grid p-jc-between" style="padding-bottom :0px !important;padding-left:10px !important;">
+        <div class="p-field p-col-12 p-sm-6 p-md-4 p-lg-6 p-xl-3">
+            <p-multiSelect [defaultLabel]="'Choose'" [options]="cols" [(ngModel)]="selectedColumns" optionLabel="header"
+                selectedItemsLabel="Customize Display" appendTo="body"
+                [showToggleAll]=true placeholder="Choose Columns" styleClass="custom-display-btn"
+                dropdownIcon="pi pi-cog">
+                <ng-template pTemplate="header">
+                    All
+                </ng-template>
+            </p-multiSelect>
+        </div>
+        <div class="p-field p-col-12 p-sm-6 p-md-4 p-lg-6 p-xl-3">
+            <button type="button" class="printButton" style="float: right;" [disabled]="printDisabled || selectedColumns.length<=0" (click)="printGridDetails()">Print</button>
+            <button type="button" class="addButton p-mr-2" style="float: right;" [attr.data-auth401]="actionListAttribute.dspAdd" [disabled]="!actionListAttribute.dspAdd" (click)="createShippingParameter()">Add New</button>
+        </div>
+    </div>
+
+    <div class="p-d-flex p-flex-column p-flex-md-row" *ngIf="showGrid">
+        <div class="p-md-12">
+            <p-table #dt [value]="shippingParametersList" [columns]="selectedColumns" [filterDelay]=500
+                [autoLayout]="true" [paginator]="isPagination" [totalRecords]="totalRecords" [rows]="15"
+                dataKey="dspNumber" [lazy]="true" (onLazyLoad)="onLazyLoad($event)" [loading]="loading"
+                stateStorage="session" stateKey="dspGrid-session" [lazyLoadOnInit]="false" responsive="true">
+                <ng-template pTemplate="header" let-columns>
+                    <tr>
+                        <th style="text-align: center; width: 5%;" *ngIf="actionListAttribute.dspDelete">Action <br/> Delete</th>
+                        <th *ngFor="let col of columns" [ngStyle]="{width: col.width}">
+                            <span pSortableColumn="{{col.field}}"> {{col.header}}
+                                <p-sortIcon *ngIf="col.sort" field="{{col.header}}"></p-sortIcon>
+                            </span> <br />
+                            <input class="gridFilter" (input)="dt.filter($any($event.target)?.value, col.field, 'contains')"
+                                [value]="$any(dt.filters[col.field])?.value" *ngIf="col.search" placeholder="{{col.placeholder}}">
+                        </th>
+                    </tr>
+                </ng-template>
+
+                <ng-template pTemplate="body" let-rowData let-columns="columns" let-editing="editing" let-ri="rowIndex">
+                    <tr>
+                        <td style="text-align: center;"  *ngIf="actionListAttribute.dspDelete">
+                            <input [pTooltip]="'Delete'" *ngIf="!editing" tooltipStyleClass="linkTooltip" type="image"
+                                (click)="onDelete(rowData)" class="icons" tooltipPosition="bottom" [disabled]="disableDeleteDSP(rowData)"
+                                src="../../../assets/images/trash.png">
+                        </td>
+                        <td *ngFor="let col of columns" >
+                            <span
+                                *ngIf="col.field !== 'lastUpdateDateTime' && col.field !== 'dspNumber'">{{rowData[col.field]}}</span>
+                            <span *ngIf="col.field === 'lastUpdateDateTime'">{{rowData[col.field] | date :
+                                'MM/dd/yyyy h:mm:ss a'}}</span>
+                            <span *ngIf="col.field === 'dspNumber' && actionListAttribute.dspEdit" [pTooltip]="toolTip"
+                            tooltipPosition="bottom" tooltipStyleClass="linkTooltip"><a class="gridLink"
+                                    (click)="showDetails(rowData)">{{rowData[col.field]}}</a>
+                                </span>
+                            <span *ngIf="col.field === 'dspNumber' && !(actionListAttribute.dspEdit)" [attr.data-auth401]="actionListAttribute.dspEdit">
+                                <a class="disabledGridLink">{{rowData[col.field]}}</a>
+                                </span>
+                        </td>
+                    </tr>
+                </ng-template>
+
+                <ng-template pTemplate="emptymessage">
+                    <tr>
+                        <td colspan="10" class="text-center">No records found.</td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="md-col-12" style="text-align: center;font-size: small;font-weight: 600;">
+                        Total Records: {{totalRecords}}
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+
+    <!-- <p-confirmDialog #cd [style]="{width: '50vw'}" [baseZIndex]="10000">
+        <p-footer>
+            <button type="button" class="accept-button float-right " (click)="cd.accept()">Yes</button>
+            <button type="button" class="reject-button float-right" (click)="cd.reject()">No</button>
+        </p-footer>
+    </p-confirmDialog> -->
+</div>
+<quality-assurance-pwm-spinner></quality-assurance-pwm-spinner>
+<quality-assurance-pwm-dialog></quality-assurance-pwm-dialog>

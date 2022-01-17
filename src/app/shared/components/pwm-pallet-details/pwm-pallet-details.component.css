@@ -1,0 +1,124 @@
+/*Start--to avoid blue-color while sorting */
+
+:host>>>.p-datatable .p-sortable-column.p-highlight {
+    color: black;
+    background: transparent;
+}
+
+:host>>>.p-datatable .p-sortable-column:hover {
+    color: black;
+    border-color: transparent;
+}
+
+:host>>>.p-datatable .p-sortable-column .p-sortable-column-icon {
+    color: transparent;
+    margin-left: 0.5rem;
+}
+
+:host>>>.p-datatable .p-sortable-column.p-highlight {
+    background: transparent;
+    color: black;
+}
+
+:host>>>.p-datatable .p-sortable-column.p-highlight .p-sortable-column-icon {
+    color: black;
+}
+
+:host>>>.p-datatable .p-sortable-column {
+    outline-color: transparent;
+}
+
+:host>>>.p-datatable .p-sortable-column.p-highlight:hover {
+    background: transparent;
+    color: black;
+}
+
+:host>>>.p-datatable .p-sortable-column.p-highlight:hover .p-sortable-column-icon {
+    color: black;
+}
+
+:host>>>.p-datatable .p-sortable-column:focus {
+    box-shadow: inset 0 0 0 0.2rem transparent;
+    outline: 0 none;
+}
+
+:host>>>.p-datatable .p-sortable-column:not(.p-highlight):hover {
+    background: transparent;
+}
+
+/*End-- to avoid blue-color while sorting */
+
+:host>>>.p-datatable .p-datatable-thead>tr>th {
+    background: #fff;
+    vertical-align: super;
+    white-space: nowrap;
+    font-family: 'Verdana' !important;
+    font-size: 15px !important;
+}
+
+:host>>>.p-datatable .p-datatable-tbody>tr>td:last-child {
+    text-align: left !important;
+}
+
+:host>>>.p-datatable .p-datatable-tbody>tr>td:first-child {
+    vertical-align: middle;
+}
+
+:host>>>.p-datatable .p-datatable-tbody>tr>td {
+    text-align: left;
+    border-width: 1px;
+    font-size: 12px;
+    font-family: 'Verdana' !important;
+    border-bottom: 1px solid #c8c8c8 !important;
+    padding: 0.3rem 0.3em;
+}
+
+:host>>>.p-datatable .p-datatable-thead>tr>th:last-child {
+    text-align: left !important;
+}
+
+:host>>>.p-datatable .p-datatable-header {
+    background: none;
+    border: 0px solid #ffff;
+}
+
+:host>>>.p-datatable .p-datatable-thead>tr>th {
+    background: #fff;
+    vertical-align: super;
+    word-wrap: break-word;
+    font-family: 'Verdana' !important;
+    font-size: 11px !important;
+    /* padding: 6px 3px 7px 5px !important; */
+}
+
+:host>>>.p-datatable .p-datatable-header {
+    background: none;
+    /* color: #333333; */
+    border: 0px solid #ffff;
+}
+
+:host>>>.p-datatable table {
+    border: 0.1rem solid rgb(105, 120, 130);
+}
+
+:host>>>.p-datatable .p-datatable-tbody>tr>td {
+    text-align: left;
+    border: 1px solid #c8c8c8;
+    border-width: 1px;
+    /* padding: 0.1rem 1.8em; */
+}
+
+:host>>>.card {
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0);
+}
+.summary {
+    text-align: center;
+    font-size: small;
+    font-weight: 600;
+}
+.readOnly {
+    font-size: 13px;
+    font-family: 'Verdana';
+    cursor: not-allowed;
+}

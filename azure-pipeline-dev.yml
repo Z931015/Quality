@@ -1,0 +1,105 @@
+# Node.js
+# Build a general Node.js project with npm.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+- dev
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    npm install
+    npm run build
+  displayName: 'Build'
+
+- powershell: |
+   Write-Host "Setting up the date time for build variable"
+   $date="$(Get-Date -format yyyyMMdd)-$(Build.BuildId)"
+   Write-Host "##vso[task.setvariable variable=buildTime]$date"
+  displayName: 'BuildTag Script'
+
+- powershell: |
+   $myEnvYml = (Get-Content ./DevDeploymentFile.yml)
+   $OutputText = $myEnvYml.Replace("DevUrl", "pwmabpgnaznonprod.azurecr.io")
+   Set-Content -Path ./DevDeploymentFile.yml -Value $OutputText
+  displayName: 'EnvironmentUrl Script'
+
+- powershell: |
+   $myYml = (Get-Content ./DevDeploymentFile.yml)
+   $OutputText = $myYml.Replace("dynamicTag", "$(buildTime)")
+   Set-Content -Path ./DevDeploymentFile.yml -Value $OutputText
+  displayName: 'BuildTagBinding Script'
+
+- powershell: |
+   $myQAEnvYml = (Get-Content ./QADeploymentFile.yml)
+   $OutputText = $myQAEnvYml.Replace("QAUrl", "pwmabpgqa.azurecr.io")
+   Set-Content -Path ./QADeploymentFile.yml -Value $OutputText
+  displayName: 'PowerShell Script for QA Environment'
+
+- powershell: |
+   $myQAYml = (Get-Content ./QADeploymentFile.yml)
+   $OutputText = $myQAYml.Replace("dynamicTag", "$(buildTime)")
+   Set-Content -Path ./QADeploymentFile.yml -Value $OutputText
+  displayName: 'Setting Build Variable for QA Deployment'
+
+- task: Docker@2
+  displayName: Docker Login
+  inputs:
+    containerRegistry: 'pwm_dev_docker'
+    command: 'login'
+
+- task: Docker@2
+  displayName: Docker Build and Push
+  inputs:
+    containerRegistry: 'pwm_dev_docker'
+    repository: 'pwm_quality_ui'
+    command: 'buildAndPush'
+    Dockerfile: '**/DevDockerFile'
+    tags: '$(buildTime)'
+
+- task: Docker@2
+  displayName: Docker Logout
+  inputs:
+    containerRegistry: 'pwm_dev_docker'
+    command: 'logout'
+
+- task: Docker@2
+  inputs:
+    containerRegistry: 'pwm_qa_docker'
+    command: 'login'
+
+- task: Docker@2
+  inputs:
+    containerRegistry: 'pwm_qa_docker'
+    repository: 'pwm_quality_ui'
+    command: 'buildAndPush'
+    Dockerfile: '**/QADockerFile'
+    tags: '$(buildTime)'
+
+- task: Docker@2
+  inputs:
+    containerRegistry: 'pwm_qa_docker'
+    command: 'logout'
+
+- task: CopyFiles@2
+  displayName: Copy Files
+  inputs:
+    Contents: |
+      DevDeploymentFile.yml
+      QADeploymentFile.yml
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+- task: PublishBuildArtifacts@1
+  displayName: Publish Artifact
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'

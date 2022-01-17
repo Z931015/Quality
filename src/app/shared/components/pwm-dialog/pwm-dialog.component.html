@@ -1,0 +1,23 @@
+<div class="loading" *ngIf="popupShow">
+    <p-dialog [style]="{width: '45vw'}" [visible]="true">
+        <ng-template pTemplate="header">
+          PWM Message
+        </ng-template>
+        <span class="headerStyle">
+         {{message}}
+        </span>
+        <p-footer>
+          <div class="col-md-12 text-right">
+            <div class="col-md-3 mx-2 d-inline">
+              <button pButton pRipple type="button" label="Ok" style="width: 15%" (click)="onHidePopup()"
+                class="btn-style p-button-outlined p-button-warning noButton"></button>
+            </div>
+            <div class="col-md-3 mr-2 d-inline">
+              <!-- <button pButton type="button" label="Yes"
+                style="width: 15%; color: #ffff; border-color: #f49c00;"
+                class="btn-style p-button-raised p-button-warning"></button> -->
+            </div>
+          </div>
+        </p-footer>
+      </p-dialog>
+</div>

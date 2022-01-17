@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pwm-quality-ui-deployment
+  namespace: pwm-qualitysystem
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pwm-quality-ui-pod
+  template:
+    metadata:
+      labels:
+        app: pwm-quality-ui-pod
+    spec:
+      nodeSelector:
+        beta.kubernetes.io/os: linux
+      containers:
+        - name: pwm-quality-ui-container
+          image: 'DevUrl/pwm_quality_ui:dynamicTag'
+          ports:
+            - containerPort: 80
+      imagePullSecrets:
+        - name: acr-token
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pwm-quality-ui-svc
+  namespace: pwm-qualitysystem
+spec:
+  selector:
+    app: pwm-quality-ui-pod
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+  type: ClusterIP

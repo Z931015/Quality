@@ -1,0 +1,182 @@
+<div class="container-fluid">
+  <div class="p-col-12 pageHeader">
+    Defects
+  </div>
+  <div class="p-md-12" style="font-family: Verdana, Geneva, Tahoma, sans-serif;font-weight: bold;">
+    <p-message *ngIf="m.details.message.show && m.details.message.onTop" [severity]="m.details.message.content.severity"
+      text={{m.details.message.content.detail}}></p-message>
+  </div>
+
+  <div class="p-fluid p-formgrid p-grid">
+    <div class="p-field p-col-12">
+      <div class="p-col-12 p-sm-12 p-md-12 p-lg-12 p-xl-12 reportType">
+        <button class="p-mr-2 resetButton" style="float: right;" (click)="cancel()">Back</button>
+        <p-tabView (onChange)="m.defects.showDefects=!m.defects.showDefects">
+          <p-tabPanel header="Select Defects">
+          </p-tabPanel>
+          <p-tabPanel header="Pallets">
+          </p-tabPanel>
+        </p-tabView>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="m.defects.showDefects">
+    <div style="margin-left: 1% !important;font-family: Verdana, Geneva, Tahoma, sans-serif;font-weight: bold;">
+      <div class="p-fluid p-formgrid p-grid">
+        <div class="p-field p-col-12">
+          <div class="p-fluid p-formgrid p-grid">
+            <div class="p-field p-col-12 p-sm-6 p-md-3 p-lg-2 p-xl-2 labelQC">
+              <label class="reportType">Select an existing QC Incident:</label>
+              <p-autoComplete [suggestions]="m.defects.data.incident.filtered" [virtualScroll]="true" [itemSize]="30"
+                (onSelect)="onQCIncidentSelection($event)" (onClear)="clearQCIncident($event)"
+                (completeMethod)="autoCompleteFilter($event,m.defects.data.incident,'label')" emptyMessage='No Records found'
+                placeholder="Select QC Incident" [(ngModel)]="m.defects.incident" ngDefaultControl name="name"
+                field="label" forceSelection="true" [inputStyle]="{'border-right': 'none'}" [dropdown]="true">
+              </p-autoComplete>
+            </div>
+          </div>
+        </div>
+        <div class="p-field p-col-12 p-sm-6 p-md-6 p-lg-3 p-xl-3 labelCategory">
+          <label>Category:</label><br />
+          <p-autoComplete [suggestions]="m.defects.data.category.filtered" [disabled]="categoryDescriptionDisabled"
+            (completeMethod)="autoCompleteFilter($event,m.defects.data.category,'categoryDescription')"
+            placeholder="Select Category" [(ngModel)]="m.defects.category" ngDefaultControl name="category"
+            field="categoryDescription" forceSelection="true" (onSelect)="onSelectCategory($event)"
+            [inputStyle]="{'border-right': 'none'}" [dropdown]="true" emptyMessage='No Records found'></p-autoComplete>
+        </div>
+        <div class="p-field p-col-12 p-sm-6 p-md-6 p-lg-3 p-xl-3 labelDescription">
+          <label>Description:</label><br />
+          <p-multiSelect [options]="m.defects.data.description.actual" [disabled]="categoryDescriptionDisabled"
+            [(ngModel)]="m.defects.data.description.selected" placeholder="Select Description" optionLabel="description"
+            [itemSize]="31" [filter]="false" selectedItemsLabel="{0} items selected"
+            [style]="{'margin-top':'0px','border-radius':'3px','height':'25px'}">
+            <ng-template pTemplate="header">
+              All
+            </ng-template>
+          </p-multiSelect>
+        </div>
+        <div class="p-field p-col-12 p-sm-12 p-md-12 p-lg-6 p-xl-6 p-mt-4">
+          <button class="resetButton" style="float: right" [disabled]="m.defects.data.description.selected.length<=0"
+            (click)="deleteDefects()">Delete</button>
+        </div>
+        <div class="p-field p-col-12" style="padding-left: 0px !important;">
+          <p-table #dtDefectTable [columns]="selectedColumns" [value]="m.defects.data.description.selected"
+            styleClass="p-datatable-responsive-demo" [(selection)]="selectedDefects" [filterDelay]="0"
+            selectionMode="multiple" dataKey="defectId" [paginator]="true" [rows]="10">
+            <ng-template pTemplate="header" let-columns>
+
+              <tr>
+                <th class="custom-checkBox-width">
+                  <br>
+                  <p-tableHeaderCheckbox style="vertical-align: middle;">
+                  </p-tableHeaderCheckbox>
+                </th>
+                <th class="defectHeadingWidth">Category</th>
+                <th class="defectHeadingWidth">Description</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-defectCategory>
+              <!-- [ngClass]="selectedDefects.includes(defectCategory) ? 'rowHighlight' : ''" -->
+              <tr [pEditableRow]="defectCategory">
+                <td style="padding-left: 7px !important;">
+                  <p-tableCheckbox [value]="defectCategory">
+                  </p-tableCheckbox>
+                </td>
+                <td>
+                  {{defectCategory['categoryDescription']}}
+                </td>
+                <td>
+                  {{defectCategory['description']}}
+                </td>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+              <tr>
+                <td></td>
+                <td colspan="12" style="text-align: center">No data found.</td>
+              </tr>
+            </ng-template>
+
+            <ng-template pTemplate="summary">
+              <div class="md-col-12" style="text-align: center;font-size: small;font-weight: 600;">
+                <!-- Total Records: {{defectCategories.length}} -->
+              </div>
+            </ng-template>
+          </p-table>
+        </div>
+        <div class="p-field p-col-12 p-sm-6 p-md-6 p-lg-12 p-xl-12 commentClass">
+          <label>Comments:</label><br>
+          <textarea type="text" [disabled]="commentDisabled" rows="2"
+            [(ngModel)]="m.defects.comments" class="textarea" pInputTextarea></textarea>
+        </div>
+        <div class="p-field p-col-12 buttonClass">
+          <div class="p-fluid p-formgrid p-grid">
+            <div class="p-col-12">
+              <div style="float: right;">
+                <button class="p-mr-2 resetButton" (click)="cancel()">Cancel</button>
+                <button class="p-mr-2 resetButton" (click)="onReset()">Reset</button>
+                <button class="primary-btn" (click)="updatePalletStatus()">Save</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!m.defects.showDefects">
+    <div class="p-field p-col-3 p-sm-3 p-md-3 p-lg-3 p-xl-3" style="padding-bottom :0px !important;">
+      <p-multiSelect [defaultLabel]="'Choose'" [options]="m.defects.table.columns.actual"
+        [(ngModel)]="m.defects.table.columns.selected" optionLabel="header" selectedItemsLabel="Customize Display"
+        placeholder="Choose Columns" [disabled]="" styleClass="custom-display-btn" dropdownIcon="pi pi-cog"
+        appendTo="body" [showToggleAll]=true>
+        <ng-template pTemplate="header">
+          All
+        </ng-template>
+      </p-multiSelect>
+    </div>
+    <div class="p-field p-col-12">
+      <p-table #dtSelectedPallet [value]="m.defects.table.data.records.actual" [showCurrentPageReport]="true"
+        [columns]="selectedColumns" [paginator]="true" [rows]="m.defects.table.rows" [rowHover]="true" editMode="row"
+        [responsive]="true">
+        <ng-template pTemplate="header" let-columns>
+          <tr>
+            <th *ngFor="let col of columns; let i = index" class="theader" pReorderableColumn
+              [ngStyle]="{width: col?.width}">
+              <span pSortableColumn="{{col.field}}"> {{col.header}}
+                <p-sortIcon *ngIf="col.sort" field="{{col.header}}"></p-sortIcon>
+              </span>
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-column="columns" let-editing="editing" let-ri="rowIndex">
+          <tr>
+            <td pEditableColumn *ngFor="let col of selectedColumns">
+              <ng-container *ngIf="col.field.endsWith('DateTime'); else notDateTime">
+                <span>{{rowData[col.field] | date: 'MM/dd/yyyy HH:mm'}}</span>
+              </ng-container>
+              <ng-template #notDateTime>
+                <span>{{rowData[col.field]}}</span>
+              </ng-template>
+            </td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td></td>
+            <td colspan="12" style="text-align: center">No data found.</td>
+          </tr>
+        </ng-template>
+
+        <ng-template pTemplate="summary">
+          <div class="md-col-12" style="text-align: center;font-size: small;font-weight: 600;">
+            Total Records: {{m.defects.table.data.totalRecords}}
+          </div>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>
+<quality-assurance-pwm-spinner></quality-assurance-pwm-spinner>
+<quality-assurance-pwm-dialog></quality-assurance-pwm-dialog>

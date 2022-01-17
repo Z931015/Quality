@@ -1,0 +1,169 @@
+<div class="container-fluid p-mt-2">
+    <div class="p-fluid p-md-12 pageHeader">
+        {{screenType}} Definable Shipping Parameters
+    </div>
+    <form [formGroup]="dspDetails" class="p-ml-2">
+        <div class="p-fluid p-formgrid p-grid p-jc-between">
+            <div class="p-field p-col-12 p-sm-6 p-md-4 p-lg-6 p-xl-3">
+                <p-autoComplete formControlName="type" name="type" [dropdown]="true" placeholder="Select Type"
+                    [suggestions]="typeList" (completeMethod)="searchType($event)" field="description" [readonly]="true"
+                    [inputStyle]="{'border-right': 'none'}" emptyMessage='No Records found' [forceSelection]="true">
+                </p-autoComplete>
+            </div>
+            <div class="p-field p-col-12 p-sm-6 p-md-8 p-lg-6 p-xl-9">
+                <button type="button" class="printButton" style="float: right;" (click)="printDetails()">Print</button>
+                <button type="button" class="resetButton p-mr-2" style="float: right;" *ngIf="screenType == 'Create'"
+                    (click)="reset()">Reset</button>
+            </div>
+        </div>
+
+        <div class="p-fluid p-formgrid p-grid">
+            <div class="p-field p-col-12 p-sm-6 p-md-4 p-lg-3 p-xl-2">
+                <label>DSP Number:</label>
+                <input type="text" class="form-control" pInputText disabled formControlName="dspNumber"
+                    name="dspNumber">
+            </div>
+            <div class="p-field p-col-12 p-sm-6 p-md-4 p-lg-3 p-xl-2">
+                <label>Last Modified</label>
+                <input type="text" class="form-control" pInputText disabled formControlName="lastModified"
+                    name="lastModified">
+            </div>
+            <div class="p-field p-col-12 p-sm-6 p-md-4 p-lg-3 p-xl-2">
+                <label>Last User:</label>
+                <input type="text" class="form-control" pInputText disabled formControlName="lastUser" name="lastUser">
+            </div>
+            <div class="p-field p-col-12 p-sm-6 p-md-4 p-lg-3 p-xl-2" *ngIf="screenType == 'Edit'">
+                <label>Producer ID:</label>
+                <input type="text" class="form-control" pInputText disabled formControlName="producerId"
+                    name="producerId">
+            </div>
+        </div>
+
+        <div class="p-fluid p-formgrid p-grid">
+            <div class="p-field p-col-12 p-sm-4 p-md-4 p-lg-3 p-xl-2">
+                <label>Pallet ID:</label>
+                <p-autoComplete formControlName="palletIdFrom" name="palletIdFrom" [dropdown]="true"
+                    (onSelect)="onSelectPallet($event, 'fromPallet')" [virtualScroll]="true" [itemSize]="itemSize"
+                    placeholder="Enter Pallet Id" [suggestions]="palletList" (completeMethod)="searchPallet($event)"
+                    [inputStyle]="{'border-right': 'none'}" emptyMessage='No Records found' field="palletId">
+                    <ng-template pTemplate="header">
+                      <div class="col-md-12">
+                        <span>Pallet ID</span>
+                        <span style="padding-left: 10px">Fake ID</span>
+                      </div>
+                    </ng-template>
+                    <ng-template let-pallet pTemplate="item">
+                        <div class="col-md-12">
+                        <span>{{pallet.palletId}}</span>
+                        <span style="padding-left: 10px">{{pallet.fakeId}}</span>
+                      </div>
+                    </ng-template>
+                </p-autoComplete>
+                <span class="error-message" *ngIf="palletFromMessage">{{palletFromMessage}}</span>
+            </div>
+            <div class="p-field p-col-12 p-sm-4 p-md-4 p-lg-3 p-xl-2">
+                <label>Pallet Thru:</label>
+                <p-autoComplete formControlName="palletIdTo" name="palletIdTo" [dropdown]="true"
+                    (onSelect)="onSelectPallet($event, 'toPallet')" [virtualScroll]="true" [itemSize]="itemSize"
+                    placeholder="Enter Pallet Thru" [suggestions]="palletList" (completeMethod)="searchPallet($event)"
+                    [inputStyle]="{'border-right': 'none'}" emptyMessage='No Records found' field="palletId">
+                    <ng-template pTemplate="header">
+                      <div class="col-md-12">
+                        <span>Pallet ID</span>
+                        <span style="padding-left: 10px">Fake ID</span>
+                      </div>
+                    </ng-template>
+                    <ng-template let-pallet pTemplate="item">
+                        <div class="col-md-12">
+                        <span>{{pallet.palletId}}</span>
+                        <span style="padding-left: 10px">{{pallet.fakeId}}</span>
+                      </div>
+                    </ng-template>
+                </p-autoComplete>
+                <span class="error-message" *ngIf="palletToMessage">{{palletToMessage}}</span>
+            </div>
+            <div class="p-field p-col-12 p-sm-4 p-md-4 p-lg-3 p-xl-3">
+                <label *ngIf="!materialSelected">Material:</label>
+                <a *ngIf="materialSelected" (click)="onMaterialClick()" class="labelLink">Material:<br></a>
+                <p-autoComplete formControlName="material" name="material" [dropdown]="true" placeholder="Enter Material"
+                    (onSelect)="onSelectMaterial($event)" [suggestions]="materialList" field="displayText"
+                    (completeMethod)="searchMaterial($event)" [virtualScroll]="true" [itemSize]="itemSize" (onKeyUp)="keyUp($event)"
+                    (onClear)="onClearMaterial($event)" [inputStyle]="{'border-right': 'none'}" emptyMessage='No Records found'>
+                </p-autoComplete>
+            </div>
+        </div>
+
+        <div class="p-fluid p-formgrid p-grid">
+            <div class="p-field p-col-12 p-sm-6 p-md-3 p-lg-3 p-xl-2">
+                <label>Lines:</label>
+                <p-multiSelect [options]="lineList" formControlName="line" name="line" placeholder="Select Lines"
+                    selectedItemsLabel="{0} items selected" [showHeader]="false" optionLabel="lineDesc" optionValue="lineId">
+                </p-multiSelect>
+            </div>
+            <div class="p-field p-col-12 p-sm-6 p-md-3 p-lg-3 p-xl-2">
+                <label>Shift:</label>
+                <p-multiSelect [options]="shiftList" formControlName="shift" name="shift" placeholder="Select Shift"
+                    selectedItemsLabel="{0} items selected" [showHeader]="false" optionLabel="shiftValue" optionValue="shiftValue">
+                </p-multiSelect>
+            </div>
+            <div class="p-field p-col-12 p-sm-6 p-md-3 p-lg-3 p-xl-2">
+                <label>Crew:</label>
+                <p-multiSelect [options]="crewList" formControlName="crew" name="crew" placeholder="Select Crew"
+                    selectedItemsLabel="{0} items selected" [showHeader]="false" optionLabel="crewValue" optionValue="crewValue">
+                </p-multiSelect>
+            </div>
+            <div class="p-field p-col-12 p-sm-6 p-md-3 p-lg-3 p-xl-2">
+                <label>Sites:</label>
+                <p-multiSelect [options]="siteList" formControlName="site" name="site" placeholder="Select Sites"
+                    selectedItemsLabel="{0} items selected" [showHeader]="false" optionLabel="siteDesc" optionValue="siteId">
+                </p-multiSelect>
+            </div>
+        </div>
+
+        <div class="p-fluid p-formgrid p-grid">
+            <div class="p-field p-col-12 p-sm-6 p-md-4 p-lg-3 p-xl-2">
+                <label>Manufactured Date:</label>
+                <p-calendar [showIcon]="true" [monthNavigator]="true" [yearNavigator]="true" [showTime]="true"
+                    (onSelect)="onSelectDate($event, 'fromDate')" formControlName="manufacturedDateFrom"
+                    name="manufacturedDateFrom" hourFormat="24" [readonlyInput]="false" yearRange="1990:2100"
+                    placeholder="MM/DD/YYYY HH:MM" [inputStyle]="{'border-right': 'none'}">
+                </p-calendar>
+                <span class="error-message" *ngIf="fromDateMessage">{{fromDateMessage}}</span>
+            </div>
+            <div class=" p-field p-col-12 p-sm-6 p-md-4 p-lg-3 p-xl-2">
+                <label>Manufactured Date Thru:</label>
+                <p-calendar [showIcon]="true" [monthNavigator]="true" [yearNavigator]="true" [showTime]="true"
+                    (onSelect)="onSelectDate($event, 'toDate')" formControlName="manufacturedDateTo"
+                    name="manufacturedDateTo" hourFormat="24" [readonlyInput]="false" yearRange="1990:2100"
+                    placeholder="MM/DD/YYYY HH:MM" [inputStyle]="{'border-right': 'none'}">
+                </p-calendar>
+                <span class="error-message" *ngIf="toDateMessage">{{toDateMessage}}</span>
+            </div>
+            <div class="p-field p-col-12 p-sm-6 p-md-4 p-lg-3 p-xl-2">
+                <label>Status:</label> <br />
+                <p-radioButton [(ngModel)]="status" formControlName="status" name="status" value="A" label="Active"
+                    class="p-mr-2"></p-radioButton>
+                <p-radioButton [(ngModel)]="status" formControlName="status" name="status" value="I" label="Inactive">
+                </p-radioButton>
+            </div>
+        </div>
+
+        <div class="p-fluid p-formgrid p-grid">
+            <div class="p-field p-col-12 p-sm-6 p-md-4 p-lg-4 p-xl-4">
+                <label>Comments:</label>
+                <textarea  [rows]="2" class="textarea" pInputTextArea formControlName="comments"
+                    placeholder="Enter Comments" name="comments" maxlength="250"></textarea>
+            </div>
+        </div>
+
+        <div class="p-d-flex p-flex-column p-flex-md-row">
+            <div class="p-d-flex  justify-content-end p-md-12">
+                <button type="button" class="resetButton p-mr-2" (click)="cancel()">Cancel</button>
+                <button type="submit" class="primary-btn" [disabled]="saveDisabled" (click)="saveDetails()">Save</button>
+            </div>
+        </div>
+
+    </form>
+</div>
+<quality-assurance-pwm-spinner></quality-assurance-pwm-spinner>
+<quality-assurance-pwm-dialog></quality-assurance-pwm-dialog>

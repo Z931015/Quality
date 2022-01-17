@@ -1,0 +1,108 @@
+/* :host >>> .p-inputtext {
+    height: 25px !important;
+    font-size: 11px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    width: 100% !important;
+} */
+
+/* :host>>>input.p-inputtext.p-component.ng-star-inserted {
+  height: 26px;
+  font-size: 11px;
+} */
+
+.asteriskColor {
+  color: rgb(244, 156, 0);
+}
+
+.btn-print {
+    border: 1px solid #f49c00;
+    background: white;
+    color: #f49c00;
+    height: 25px;
+    width: 90px;
+    font-family: verdana;
+    font-weight: 600;
+    font-size: 12px;
+    border-radius: 4px;
+}
+
+.form-control {
+    display: block;
+    min-height: 0% !important;
+    padding: 0.375rem 0.75rem;
+    font-size: 11px;
+    font-weight: 400;
+    height: 26px;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #a6a6a6;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+
+  .form-control:disabled, .form-control[readonly] {
+    opacity: 1;
+    background: #c0c0c040 !important;
+  }
+  @media (min-width: 1200px) {
+    .p-xl-4, .p-xl-3 {
+      padding: 0.5rem !important;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .p-md-3, .p-md-4 {
+        padding: 0.5rem !important;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .p-lg-4, .p-lg-3 {
+      padding: 0.5rem !important;
+    }
+  }
+
+  @media (min-width: 576px) {
+    .p-sm-4 {
+      padding: 0.5rem !important;
+    }
+  }
+
+:host>>> .p-field > label{
+  margin-bottom: 0rem;
+}
+:host>>> .p-field{
+  margin-bottom: 0.5rem;
+}
+
+  .searchBtn {
+    color: #ffffff;
+    background-color: rgb(244, 156, 0);
+    width: 85px;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 13px;
+    height: 24px;
+    cursor: pointer;
+    margin-left: 13px;
+    /* margin-top: 1px; */
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: none;
+  }
+
+  .marginTop {
+    margin-top: 2%;
+  }
+
+
+.p-grid {
+  margin-right: 0rem;
+  margin-left: 0rem;
+  margin-top: 0rem;
+}

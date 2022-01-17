@@ -1,0 +1,24 @@
+<div class="container-fluid">
+
+        <div class="row marginTop p-d-flex">
+          <div class="heading">Extend Expiration Date/Pallet Inquiry</div>
+        </div>
+
+        <div class="p-formgroup-inline lineSpacing">
+          <div class="p-field-checkbox">
+            <p-radioButton type="radio" name="selectedRadio" [value]=true name="qa" id="extended"
+              label="Extend Expiration Date" inputId="opt1" class="p-mr-2"
+              [(ngModel)]="extendedService.isExtended"></p-radioButton>
+          </div>
+          <div class="p-field-checkbox">
+            <p-radioButton type="radio" name="selectedRadio" name="qa" id="pallet"
+            [value]=false label="Pallet Inquiry" inputId="opt2" class="p-mr-2"
+              [(ngModel)]="extendedService.isExtended"></p-radioButton>
+          </div>
+        </div>
+
+          <quality-assurance-pwm-pallet-extend-expiry *ngIf="extendedService.isExtended"></quality-assurance-pwm-pallet-extend-expiry>
+
+          <quality-assurance-pwm-pallet-inquiry-details *ngIf="!extendedService.isExtended"></quality-assurance-pwm-pallet-inquiry-details>
+
+</div>

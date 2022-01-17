@@ -1,0 +1,255 @@
+<div class="p-md-12" style="font-family: Verdana, Geneva, Tahoma, sans-serif;font-weight: bold;">
+  <p-message *ngIf="m.message.show && m.message.onTop" [severity]="m.message.content.severity"
+    text={{m.message.content.detail}}></p-message>
+</div>
+
+<div style="margin-left: 10px;;">
+  <div class="p-fluid p-formgrid p-grid">
+    <div class="p-field p-col-12 p-md-12 p-lg-4 p-xl-4 subHeading" style="padding:0px !important">
+      <div class="ticket-num-range">Pallet ID Range:</div>
+      <div class="p-fluid p-formgrid p-grid">
+        <!-- from -->
+        <div class="p-field p-col-12 p-sm-6 p-md-3 p-lg-6 p-xl-6 pallet-from" style="padding-top:0px !important">
+          <label class="labelHeading">From:
+          </label> <br>
+
+          <p-autoComplete placeholder="Enter From Pallet ID" field="palletId" [(ngModel)]="m.pallet.from"
+            [suggestions]="m.data.palletFrom.filtered" [dropdown]="true" [inputStyle]="{'border-right': 'none'}"
+            (completeMethod)="autoCompleteFilter($event,m.data.palletFrom,'palletId')" [forceSelection]="true"
+            [virtualScroll]="true" [itemSize]='itemSize' emptyMessage='No Pallets found' name="fromPalletId">
+            <ng-template pTemplate="header">
+              <div class="col-md-12">
+                <span>Pallet ID</span>
+                <span style="padding-left: 10px">Fake ID</span>
+              </div>
+            </ng-template>
+            <ng-template let-pallet pTemplate="item">
+                <div class="col-md-12">
+                <span>{{pallet.palletId}}</span>
+                <span style="padding-left: 10px">{{pallet.fakeId}}</span>
+              </div>
+            </ng-template>
+          </p-autoComplete>
+        </div>
+        <!--Thru -->
+        <div class="p-field p-col-12  p-sm-6 p-md-3 p-lg-6 p-xl-6" style="padding-top:0px !important">
+          <label class="labelHeading">Thru:
+          </label> <br>
+          <p-autoComplete placeholder="Enter To Pallet ID" field="palletId" [(ngModel)]="m.pallet.to"
+            [emptyMessage]="'Not Pallets Found'" [suggestions]="m.data.palletTo.filtered" [inputStyle]="{'border-right': 'none'}"
+            (completeMethod)="autoCompleteFilter($event,m.data.palletTo,'palletId')" [virtualScroll]="true"
+            [itemSize]='itemSize' [dropdown]="true">
+            <ng-template pTemplate="header">
+              <div class="col-md-12">
+                <span>Pallet ID</span>
+                <span style="padding-left: 10px">Fake ID</span>
+              </div>
+            </ng-template>
+            <ng-template let-pallet pTemplate="item">
+                <div class="col-md-12">
+                <span>{{pallet.palletId}}</span>
+                <span style="padding-left: 10px">{{pallet.fakeId}}</span>
+              </div>
+            </ng-template>
+          </p-autoComplete>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-field p-col-12 p-sm-12 p-md-12 p-lg-8 p-xl-8 subHeading" style="padding: 0px!important">
+      <div class="ticket-num-range">Manufactured Date:</div>
+      <div class="p-fluid p-formgrid p-grid">
+        <!-- from date-->
+        <div class="p-field p-col-12 p-sm-6 p-md-3 p-lg-3 p-xl-3 manufacturing-from"
+          style="padding-top: 0px !important;">
+          <label class="labelHeading">From:</label>
+          <br>
+          <p-calendar id="fromDate" name="planStartDate" [showIcon]="true"
+            [(ngModel)]="m.mfgDate.from" [monthNavigator]="true" [yearNavigator]="true" showTime="true"
+            [dateFormat]="appConfig.defaults.date.dateFormat" [hourFormat]="appConfig.defaults.date.hourFormat"
+            [minDate]="appConfig.defaults.date.min" [maxDate]="appConfig.defaults.date.max" [inputStyle]="{'border-right': 'none'}"
+            [placeholder]="appConfig.defaults.date.placeholder" [yearRange]="appConfig.defaults.date.yearRange">
+          </p-calendar>
+        </div>
+        <!-- to date -->
+        <div class="p-field p-col-12 p-sm-6 p-md-3 p-lg-3 p-xl-3" style="padding-top: 0px !important;">
+          <label class="labelHeading">To:</label>
+          <br>
+          <p-calendar id="todate" name="planStartDate" [showIcon]="true"
+            [(ngModel)]="m.mfgDate.to" [monthNavigator]="true" [yearNavigator]="true" showTime="true"
+            [dateFormat]="appConfig.defaults.date.dateFormat" [hourFormat]="appConfig.defaults.date.hourFormat"
+            [minDate]="appConfig.defaults.date.min" [maxDate]="appConfig.defaults.date.max" [inputStyle]="{'border-right': 'none'}"
+            [placeholder]="appConfig.defaults.date.placeholder" [yearRange]="appConfig.defaults.date.yearRange">
+          </p-calendar>
+        </div>
+        <!-- material -->
+        <div class="p-field p-col-12 p-sm-10 p-md-6 p-lg-6 p-xl-6 material-width">
+          <label class="labelHeading">Material:<span class="asteriskColor">*</span>
+          </label>
+          <br>
+          <p-autoComplete placeholder="Enter Material" field="displayText" [(ngModel)]="m.material"
+            [virtualScroll]="true" [itemSize]='itemSize' [emptyMessage]="'Not Material Found'"
+            [suggestions]="m.data.material.filtered" [inputStyle]="{'border-right': 'none'}"
+            (completeMethod)="autoCompleteFilter($event,m.data.material,'displayText')" [style]="{'width':'88%'}"
+            [dropdown]="true">
+          </p-autoComplete>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="p-fluid p-formgrid p-grid">
+    <div class="p-field p-col-12 p-sm-6 p-md-3 p-lg-2 p-xl-2 extended-expiry">
+      <label class="labelHeading">Extend Expiry Date:<span class="asteriskColor">*</span>
+      </label> <br>
+      <p-calendar id="extendedDdate" [showIcon]="true"
+        [(ngModel)]="m.extendExpiryDate" [monthNavigator]="true" [yearNavigator]="true" showTime="true"
+        [dateFormat]="appConfig.defaults.date.dateFormat" [hourFormat]="appConfig.defaults.date.hourFormat"
+        [minDate]="appConfig.defaults.date.min" [maxDate]="appConfig.defaults.date.max" [inputStyle]="{'border-right': 'none'}"
+        [placeholder]="appConfig.defaults.date.placeholder" [yearRange]="appConfig.defaults.date.yearRange">
+      </p-calendar>
+    </div>
+    <div class="p-field p-col-12 p-sm-6 p-md-3 p-lg-2 p-xl-2 manual expiration-date">
+      <label class="checking">Manual Expiration Date
+        <input type="checkbox" id="automaticReceipSend" name="automaticReceipSend" class="pointer"
+          value="automaticReceipSend" [(ngModel)]="m.manualExpiryDate">
+        <span class="checkmarkCheckbox"></span>
+      </label>
+    </div>
+  </div>
+
+
+  <div class="p-fluid p-formgrid p-grid">
+    <div class="p-col-12">
+      <div style="float: right">
+        <button type="button" label="Search" class="p-mr-2 primary-btn" (click)="onSearch()">Search</button>
+        <button type="button" label="Reset" type="button" class="primary-btn" (click)="onReset()">Reset</button>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+
+<div *ngIf="m.message.show && !m.message.onTop" class="p-md-12"
+  style="font-family: Verdana, Geneva, Tahoma, sans-serif;font-weight: bold;">
+  <p-message [severity]="m.message.content.severity" text={{m.message.content.detail}}></p-message>
+</div>
+
+<div *ngIf="m.table.show">
+  <div class="p-fluid p-formgrid p-grid">
+    <div class="p-field p-col-3 p-sm-3 p-md-3 p-lg-3 p-xl-3">
+      <p-multiSelect [defaultLabel]="'Choose'" [options]="m.table.columns.actual" [(ngModel)]="m.table.columns.selected"
+        optionLabel="header" selectedItemsLabel="Customize Display"
+        placeholder="Choose Columns" styleClass="custom-display-btn" dropdownIcon="pi pi-cog"
+        appendTo="body" [showToggleAll]=true [disabled]="m.table.data.totalRecords<=0">
+        <ng-template pTemplate="header" class="multiselectHeader">
+          All
+        </ng-template>
+      </p-multiSelect>
+    </div>
+    <div class="p-field p-col-12 p-md-9 p-lg-9 p-xl-9 p-sm-9">
+      <div class="p-fluid p-formgrid p-grid float-right">
+        <div class="p-field p-col-3 p-mr-2">
+          <button type="button" class="excelButton" [attr.data-auth401]="actionListAttribute.extendedSaveOrClear" [disabled]="!(actionListAttribute.extendedSaveOrClear && !!m.table.data.records.selected.length)"
+            label="Clear Exp.Date" (click)="confirm(null)">Clear
+            Exp.Date</button>
+        </div>
+        <div class="p-field p-col-2 p-mr-2">
+          <button type="button" type="button" label="Save" [attr.data-auth401]="actionListAttribute.extendedSaveOrClear" [disabled]="!(actionListAttribute.extendedSaveOrClear && !!m.table.data.records.selected.length)"
+            class="primary-btn" (click)="confirm(m.extendExpiryDate)">Save</button>
+        </div>
+        <div class="p-field p-col-3 p-mr-2">
+          <button type="button" class="excelButton" [disabled]="m.table.data.totalRecords<=0 || m.table.columns.selected.length<=0"
+            (click)="downloadFiles('excel')">Export To
+            Excel</button>
+        </div>
+        <div class="p-field p-col-2">
+          <button type="button" class="printButton" [disabled]="m.table.data.totalRecords<=0 || m.table.columns.selected.length<=0"
+            (click)="downloadFiles('pdf')">Print</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <p-table #dt [value]="m.table.data.records.actual" [filterDelay]=m.table.filterDelay [columns]="selectedColumns" dataKey="palletId"
+    selectionMode="multiple" styleClass="p-datatable-responsive-demo" [rowHover]="true" class="table-view"
+    *ngIf="this.m.table.columns.selected.length>0" [autoLayout]="m.table.autoLayout"
+    [(selection)]="m.table.data.records.selected" [rows]="m.table.rows" [totalRecords]="m.table.data.totalRecords"
+    [lazy]="m.table.lazy" [paginator]="m.table.paginator" (onLazyLoad)="extendedlazyLoad($event)"
+    [loading]="m.table.loading" editMode="row" stateStorage="session" [stateKey]="m.table.key" [responsive]='true'>
+    <ng-template pTemplate="header" let-columns>
+      <tr style="height:34px">
+        <th class="pCheckbox" [ngClass]="m.table.data.records.actual.length<=0 ? 'notallowed' : 'allowed'"
+          style="width: 5%; text-align: center;vertical-align: middle;">
+          <p-tableHeaderCheckbox>
+          </p-tableHeaderCheckbox>
+        </th>
+        <th *ngFor="let col of columns" class="theader" [ngStyle]="{width:col.width}">
+          <span pSortableColumn="{{col.field}}">
+            {{col.header}}
+            <p-sortIcon field="{{col.header}}"></p-sortIcon>
+          </span> <br>
+          <span>
+            <input pInputText type="text" *ngIf="['palletId','shiftId','crewId','lineId'].includes(col.field)"
+              (input)="dt.filter($event.target.value, col.field, 'contains')" placeholder="{{col.placeholder}}"
+              [value]="$any(dt.filters[col.field])?.value" [disabled]="diableNoData"
+              [ngClass]="diableNoData ? 'notallowed' : 'allowed'" class="p-column-filter"
+              style="white-space: none !important;" [ngStyle]="{width: col.searchWidth,height:col.height}">
+          </span>
+          <input *ngIf="col.field.endsWith('DateTime')" pInputText type="date" class="p-column-filter dateInput"
+            [attr.min]="(appConfig.defaults.date.min| date:'yyyy-MM-dd')"
+            [attr.max]="(appConfig.defaults.date.max| date:'yyyy-MM-dd')" [disabled]="diableNoData"
+            [ngClass]="diableNoData ? 'notallowed' : 'allowed'"
+            (input)="dt.filter($event.target.value, col.field, 'dateFilter')" placeholder="{{col.placeHolder}}"
+            [value]="$any(dt.filters[col.field])?.value" showButtonBar="true" style="height: 22px;"
+            pattern="(0[1-9]|1[0-2])/(0[1-9]|[1-2][0-9]|3[0-1])/[0-9]{4}">
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns" let-editing="editing" let-ri="rowIndex">
+      <tr [pEditableRow]="rowData" [ngClass]="m.table.data.records.selected.includes(rowData) ? 'bgHighLight' : ''">
+        <td style="padding-left: 7px !important; ">
+          <p-tableCheckbox [value]="rowData">
+          </p-tableCheckbox>
+        </td>
+        <td *ngFor="let col of columns" [ngStyle]="{width:col.width}">
+          <span>
+            <p-cellEditor>
+              <ng-template pTemplate="output">
+                <span *ngIf="['palletId','materialDisplayText'].includes(col.field)" [pTooltip]="toolTip"
+                  tooltipPosition="bottom" tooltipStyleClass="linkTooltip">
+                  <a class="gridLink" (click)="hyperlinkAction(col.field, rowData)">{{rowData[col.field]}}</a></span>
+                <span *ngIf="col.field.endsWith('DateTime')">
+                  {{rowData[col.field] | date : 'MM/dd/yyyy HH:mm'}}
+                </span>
+                <span
+                  *ngIf="!['palletId','materialDisplayText'].includes(col.field) && !col.field.endsWith('DateTime')">{{rowData[col.field]}}</span>
+              </ng-template>
+            </p-cellEditor>
+          </span>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="16" class="emptymessage">No data found.</td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      <div class="md-col-12 summary">
+        Total Records : {{m.table.data.totalRecords}}
+      </div>
+    </ng-template>
+  </p-table>
+</div>
+
+<p-confirmDialog #cd key="cdb">
+  <p-footer>
+    <button type="button" class="btn btn-sm btn-outline-warning conf-dialog" (click)="cd.reject()">Cancel</button>
+    <button type="button" class="btn btn-sm btn-outline-warning ok" (click)="cd.accept()">Ok</button>
+  </p-footer>
+</p-confirmDialog>
+<!-- </div> -->
+<quality-assurance-pwm-spinner></quality-assurance-pwm-spinner>
+<quality-assurance-pwm-dialog></quality-assurance-pwm-dialog>

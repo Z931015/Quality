@@ -1,0 +1,167 @@
+<div class="container-fluid">
+  <div class="p-col-12 pageHeader">
+    Change Material Status
+  </div>
+  <div style="margin-left: 1% !important;font-family: Verdana, Geneva, Tahoma, sans-serif;font-weight: bold;">
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-col-12 p-sm-6 p-md-2 p-lg-2 p-xl-2">
+        <label>Pallet From</label><span>:</span><br>
+        <p-autoComplete [(ngModel)]="line" [suggestions]="lineDetails" (completeMethod)="searchLine($event)"
+        placeholder="Enter pallet" emptyMessage="No Records Found"  ngDefaultControl
+        name ="fullDescription" field="combinedKey" [inputStyle]="{'border-right': 'none'}"
+        [dropdown]="true" forceSelection="true" ></p-autoComplete>
+       </div>
+
+      <div class="p-col-12 p-sm-6 p-md-4 p-lg-2 p-xl-2 material-width">
+
+        <label>Pallet Thru</label><span>:</span><br>
+        <p-autoComplete [(ngModel)]="storageLoc" [suggestions]="storageDetails" (completeMethod)="searchStorage($event)"
+        placeholder="Enter pallet" emptyMessage="No Records Found"  ngDefaultControl
+        name ="fullDescription" field="combinedKey" [inputStyle]="{'border-right': 'none'}"
+        [dropdown]="true" forceSelection="true" ></p-autoComplete>
+      </div>
+
+      <div class="p-col-12 p-sm-6 p-md-4 p-lg-2 p-xl-2">
+
+        <label>Material</label><span>:</span><br>
+        <p-autoComplete [(ngModel)]="material" [suggestions]="materialDetails" (completeMethod)="searchMaterial($event)"
+                  placeholder="Enter Material" emptyMessage="No Records Found"  ngDefaultControl
+                  name ="fullDescription" field="combinedKey" [inputStyle]="{'border-right': 'none'}"
+                  [dropdown]="true" forceSelection="true" ></p-autoComplete>
+      </div>
+      <div class="p-col-12 p-sm-6 p-md-2 p-lg-2 p-xl-2">
+        <label>Manufactured From</label><span>:</span><br>
+       <p-calendar class="ui-calender ui-datepicker p-mb-2 p-mr-2" [showIcon]="true" id="list" [maxDate]="maxDate"
+        [minDate]="minDate" [monthNavigator]="true" [yearNavigator]="true" [readonlyInput]="false" yearRange="1990:2100"
+        inputId="navigators" inputId="icon" [showTime]="true" inputId="time" [hourFormat]="24"
+        placeholder="MM/DD/YYYY" [style]="{height:'30px',maxWidth:'214px'}">
+          </p-calendar>
+      </div>
+      <div class="p-col-12 p-sm-6 p-md-2 p-lg-2 p-xl-2">
+        <label>Manufactured To</label><span>:</span><br>
+       <p-calendar class="ui-calender ui-datepicker p-mb-2 p-mr-2" [showIcon]="true" id="list" [maxDate]="maxDate"
+        [minDate]="minDate" [monthNavigator]="true" [yearNavigator]="true" [readonlyInput]="false" yearRange="1990:2100"
+        inputId="navigators" inputId="icon" [showTime]="true" inputId="time" [hourFormat]="24"
+        placeholder="MM/DD/YYYY" [style]="{height:'30px',maxWidth:'214px'}">
+          </p-calendar>
+      </div>
+  </div>
+  <div class="p-fluid p-formgrid p-grid">
+    <div class="p-col-11">
+      <div style="float: right">
+        <button type="button" label="Search" class="p-mr-2 primary-btn" (click)="onSearch()">Search</button>
+        <button type="button" label="Reset" type="button" class="primary-btn" (click)="onReset()">Reset</button>
+      </div>
+    </div>
+  </div>
+  <br>
+  <hr>
+  <div class="p-fluid p-formgrid p-grid formMargin p-mt-2">
+    <div class="p-field p-col-3 p-sm-3 p-md-3 p-lg-3 p-xl-3"
+      style="padding-bottom :0px !important;padding-left:10px !important;">
+      <p-multiSelect [defaultLabel]="'Choose'" optionLabel="header" selectedItemsLabel="Customize Display"
+        placeholder="Choose Columns" styleClass="custom-display-btn" dropdownIcon="pi pi-cog" appendTo="body"
+        [showToggleAll]=true [options]="m.details.table.columns.actual" [(ngModel)]="m.details.table.columns.selected"
+        [disabled]="m.details.table.data.totalRecords<=0">
+        <ng-template pTemplate="header">
+          All
+        </ng-template>
+      </p-multiSelect>
+    </div>
+    <div class="p-field p-col-3 p-sm-3 p-md-3 p-lg-3 p-xl-3" style="padding-bottom :0px !important;">
+    </div>
+    <div class="p-field p-col-6 p-sm-6 p-md-6 p-lg-6 p-xl-6" style="padding-bottom :0px !important;">
+      <button type="button" label="Search" class="primary-btn float-right p-mr-1" (click)="onSearch()">Sumbit</button>
+      <button
+        class="printButton float-right p-mr-1"
+        (click)="downloadFiles('pdf')"
+        [disabled]="m.details.table.data.records.actual?.length == 0 || selectedColumns?.length == 0"
+        [ngClass]="{'btn-disabled' : m.details.table.data.records.actual?.length == 0 || selectedColumns?.length == 0}">
+        Print
+    </button>
+      <button
+        class="excelButton float-right p-mr-1"
+        (click)="downloadFiles('excel')"
+        [disabled]="m.details.table.data.records.actual?.length == 0 || selectedColumns?.length == 0"
+        [ngClass]="{'btn-disabled' : m.details.table.data.records.actual?.length == 0 || selectedColumns?.length == 0}">
+        Export To Excel
+    </button>
+    <button
+        class="printButton float-right p-mr-1"
+        (click)="reset('pdf')"
+        [disabled]="m.details.table.data.records.actual?.length == 0 || selectedColumns?.length == 0"
+        [ngClass]="{'btn-disabled' : m.details.table.data.records.actual?.length == 0 || selectedColumns?.length == 0}">
+        Reset
+    </button>
+    </div>
+    <div class="p-field p-col-12">
+      <p-table *ngIf="this.m.details.table.columns.selected.length>0" #dtChangeMaterial
+        [value]="m.details.table.data.records.actual" [(selection)]="m.details.table.data.records.selected"
+        [totalRecords]="m.details.table.data.totalRecords" [showCurrentPageReport]="true" [columns]="selectedColumns"
+        [paginator]="m.details.table.paginator" [rows]="m.details.table.rows"
+        [filterDelay]="m.details.table.filterDelay" [autoLayout]="m.details.table.autoLayout"
+        [lazy]="m.details.table.lazy" [responsive]="true" [rowHover]="true" editMode="row" selectionMode="multiple"
+         dataKey="palletId" [reorderableColumns]="true" stateStorage="session" [stateKey]="m.details.table.key"
+        [loading]="m.details.table.loading" (onLazyLoad)="onLazyLoad($event)">
+
+        <ng-template pTemplate="header" let-columns>
+          <tr>
+            <th style="width:'3%';padding-left: '7px !important'">
+              <br>
+              <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+            </th>
+            <th *ngFor="let col of columns; let i = index" class="theader" pReorderableColumn
+              [ngStyle]="{width: col?.width}">
+              <span *ngIf="col.sort" pSortableColumn="{{col.field}}"> {{col.header}}
+                <p-sortIcon field="{{col.header}}"></p-sortIcon>
+              </span>
+              <span *ngIf="!col.sort"> {{col.header}}
+              </span>
+              <br>
+              <input class="gridFilter"
+                (input)="dtChangeMaterial.filter($event.target.value, col.field, 'contains')" max="5"
+                [value]="$any(dtChangeMaterial.filters[col.field])?.value" *ngIf="col.search"
+                [placeholder]="col.placeholder">
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-column="columns" >
+          <tr [pSelectableRow]="rowData"
+            >
+            <td style="padding-left: 7px !important;">
+              <p-tableCheckbox [pSelectableRow]="rowData" [value]="rowData" >
+              </p-tableCheckbox>
+            </td>
+            <ng-container *ngFor="let col of selectedColumns">
+              <td>
+                <span>
+                  <p-cellEditor>
+                    <ng-template pTemplate="output">
+                      <a *ngIf="['palletId','materialDisplayText'].includes(col.field)"  [pTooltip]="tooltipText" tooltipPosition="bottom" tooltipStyleClass="linkTooltip"
+                        (click)="routeDetailsPage(col.field,rowData)" class="gridLink">{{rowData[col.field]}}</a>
+                      <span *ngIf="col.field.endsWith('DateTime')">{{rowData[col.field] | date : 'MM/dd/yyyy HH:mm'}}</span>
+                      <span
+                        *ngIf="!['palletId','materialDisplayText'].includes(col.field) && !col.field.endsWith('DateTime')">{{rowData[col.field]}}</span>
+                    </ng-template>
+                  </p-cellEditor>
+                </span>
+              </td>
+            </ng-container>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td></td>
+            <td colspan="12" style="text-align: center!important">No data found.</td>
+          </tr>
+        </ng-template>
+
+        <ng-template pTemplate="summary">
+          <div class="md-col-12" style="text-align: center;font-size: small;font-weight: 600;">
+            Total Records: {{m.details.table.data.totalRecords}}
+          </div>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>

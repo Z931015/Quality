@@ -1,0 +1,215 @@
+<div class="container-fluid">
+  <div class="p-col-12 pageHeader">
+    Change Pallet Status
+  </div>
+  <div class="p-md-12" style="font-family: Verdana, Geneva, Tahoma, sans-serif;font-weight: bold;">
+    <p-message *ngIf="m.details.message.show && m.details.message.onTop" [severity]="m.details.message.content.severity"
+      text={{m.details.message.content.detail}}></p-message>
+  </div>
+  <div style="margin-left: 1% !important;font-family: Verdana, Geneva, Tahoma, sans-serif;font-weight: bold;">
+    <div *ngIf="m.details.siteType==3" class="p-fluid p-formgrid p-grid">
+      <div class="p-col-12 p-sm-6 p-md-3 p-lg-2 p-xl-2">
+        <label class="reportType">Producer ID:</label><br>
+        <p-dropdown [options]="m.details.data.producer.actual" [(ngModel)]="m.details.producer"
+          optionLabel="id">
+          <ng-template pTemplate="header">
+            <div class="col-md-12">
+              <span>Producer Code</span>
+              <span style="padding-left: 10px">Producer Name</span>
+            </div>
+          </ng-template>
+          <ng-template let-producer pTemplate="item" >
+              <div class="col-md-12" style="
+              display: flex;
+              justify-content: space-between;">
+              <span>{{producer.id}}</span>
+              <span style="padding-left: 10px">{{producer.description}}</span>
+            </div>
+          </ng-template>
+        </p-dropdown>
+      </div>
+      <div class="p-col-12 p-sm-6 p-md-3 p-lg-2 p-xl-2">
+        <label class="reportType">Producer Description:</label><br>
+        <input pInputText [ngModel]="m.details.producer.description" type="text" disabled="true"
+          style="white-space: none !important;">
+      </div>
+    </div>
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col-12 p-sm-6 p-md-3 p-lg-2 p-xl-2">
+        <label class="reportType">Pallet ID:</label><br>
+        <input pInputText [(ngModel)]="m.details.palletId" type="text" placeholder="Enter Pallet ID"
+          style="white-space: none !important;" (keyup.enter)="formatPalletId(m.details.palletId)" (blur)="formatPalletId(m.details.palletId)">
+      </div>
+      <div class="p-field p-col-12 p-sm-6 p-md-3 p-lg-2 p-xl-2">
+        <label class="reportType">Status:</label><br>
+        <p-dropdown [options]="m.details.data.status.actual" [(ngModel)]="m.details.status.from" optionLabel="description">
+        </p-dropdown>
+      </div>
+      <div class="p-field p-col-12 p-sm-6 p-md-3 p-lg-2 p-xl-2">
+        <label class="reportType">Manufactured Date:</label><br>
+        <p-calendar [showIcon]="true" [(ngModel)]="m.details.mfgDate.from"
+          [monthNavigator]="true" [yearNavigator]="true" showTime="true" [inputStyle]="{'border-right': 'none'}"
+          [dateFormat]="appConfig.defaults.date.dateFormat" [hourFormat]="appConfig.defaults.date.hourFormat"
+          [minDate]="appConfig.defaults.date.min" [maxDate]="appConfig.defaults.date.max"
+          [placeholder]="appConfig.defaults.date.placeholder" [yearRange]="appConfig.defaults.date.yearRange">
+        </p-calendar>
+      </div>
+      <div class="p-field p-col-12 p-sm-6 p-md-3 p-lg-2 p-xl-2">
+        <label class="reportType">Thru Date:</label><br>
+        <p-calendar [showIcon]="true" [(ngModel)]="m.details.mfgDate.to"
+          [monthNavigator]="true" [yearNavigator]="true" showTime="true" [inputStyle]="{'border-right': 'none'}"
+          [dateFormat]="appConfig.defaults.date.dateFormat" [hourFormat]="appConfig.defaults.date.hourFormat"
+          [minDate]="appConfig.defaults.date.min" [maxDate]="appConfig.defaults.date.max"
+          [placeholder]="appConfig.defaults.date.placeholder" [yearRange]="appConfig.defaults.date.yearRange">
+        </p-calendar>
+      </div>
+      <div class="p-field p-col-12 p-sm-12 p-md-12 p-lg-4 p-xl-4">
+        <div class="p-fluid p-formgrid p-grid" style="padding: 12px 0 0 0;float: right;">
+          <div class="p-field p-col-9 p-sm-9 p-md-10 p-lg-8 p-xl-8 resetClass">
+            <button type="button" label="Search" class="p-mr-2 primary-btn" (click)="onSearch()">Search</button>
+          </div>
+          <div class="p-field p-col-3 p-sm-3 p-md-2 p-lg-4 p-xl-4 searchClass" style="padding: 0px !important;">
+            <button type="button" label="Reset" type="button" class="primary-btn"
+              (click)="initForm(true)">Reset</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hrStyle">
+    <hr>
+  </div>
+  <div *ngIf="m.details.message.show && !m.details.message.onTop" class="p-md-12"
+    style="font-family: Verdana, Geneva, Tahoma, sans-serif;font-weight: bold;">
+    <p-message [severity]="m.details.message.content.severity" text={{m.details.message.content.detail}}></p-message>
+  </div>
+  <div *ngIf="m.details.table.show">
+    <div class="p-fluid p-formgrid p-grid formMargin">
+      <div class="p-field p-col-3 p-sm-3 p-md-3 p-lg-3 p-xl-3"
+        style="padding-bottom :0px !important;padding-left:10px !important;">
+        <p-multiSelect [defaultLabel]="'Choose'" optionLabel="header" selectedItemsLabel="Customize Display"
+          placeholder="Choose Columns" styleClass="custom-display-btn" dropdownIcon="pi pi-cog" appendTo="body"
+          [showToggleAll]=true [options]="m.details.table.columns.actual" [(ngModel)]="m.details.table.columns.selected"
+          [disabled]="m.details.table.data.totalRecords<=0">
+          <ng-template pTemplate="header">
+            All
+          </ng-template>
+        </p-multiSelect>
+      </div>
+      <div class="p-field p-col-3 p-sm-3 p-md-3 p-lg-3 p-xl-3" style="padding-bottom :0px !important;">
+      </div>
+      <div class="p-field p-col-6 p-sm-6 p-md-6 p-lg-6 p-xl-6" style="padding-bottom :0px !important;">
+        <button
+          class="printButton float-right p-mr-1"
+          (click)="downloadFiles('pdf')"
+          [disabled]="m.details.table.data.records.actual?.length == 0 || selectedColumns?.length == 0"
+          [ngClass]="{'btn-disabled' : m.details.table.data.records.actual?.length == 0 || selectedColumns?.length == 0}">
+          Print
+      </button>
+        <button
+          class="excelButton float-right p-mr-1"
+          (click)="downloadFiles('excel')"
+          [disabled]="m.details.table.data.records.actual?.length == 0 || selectedColumns?.length == 0"
+          [ngClass]="{'btn-disabled' : m.details.table.data.records.actual?.length == 0 || selectedColumns?.length == 0}">
+          Export To Excel
+      </button>
+        <p-splitButton label="Action" [model]="m.details.actionMenu" styleClass="custom-split-btn"
+          [disabled]="m.details.table.data.records.selected.length==0 || m.details.status.from.toStatus == undefined ||
+          m.details.table.columns.selected.length == 0" class="action-margin p-mr-1">
+        </p-splitButton>
+      </div>
+      <div class="p-field p-col-12">
+        <p-table *ngIf="this.m.details.table.columns.selected.length>0" #dtChangePallet
+          [value]="m.details.table.data.records.actual" [(selection)]="m.details.table.data.records.selected"
+          [totalRecords]="m.details.table.data.totalRecords" [showCurrentPageReport]="true" [columns]="selectedColumns"
+          [paginator]="m.details.table.paginator" [rows]="m.details.table.rows"
+          [filterDelay]="m.details.table.filterDelay" [autoLayout]="m.details.table.autoLayout"
+          [lazy]="m.details.table.lazy" [responsive]="true" [rowHover]="true" editMode="row" selectionMode="multiple"
+           dataKey="palletId" [reorderableColumns]="true" stateStorage="session" [stateKey]="m.details.table.key"
+          [loading]="m.details.table.loading" (onLazyLoad)="onLazyLoad($event)">
+
+          <ng-template pTemplate="header" let-columns>
+            <tr>
+              <th style="width:'3%';padding-left: '7px !important'">
+                <br>
+                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+              </th>
+              <th *ngFor="let col of columns; let i = index" class="theader" pReorderableColumn
+                [ngStyle]="{width: col?.width}">
+                <span *ngIf="col.sort" pSortableColumn="{{col.field}}"> {{col.header}}
+                  <p-sortIcon field="{{col.header}}"></p-sortIcon>
+                </span>
+                <span *ngIf="!col.sort"> {{col.header}}
+                </span>
+                <br>
+                <input class="gridFilter" [disabled]="disableNodata"
+                  (input)="dtChangePallet.filter($event.target.value, col.field, 'contains')" max="5"
+                  [value]="$any(dtChangePallet.filters[col.field])?.value" *ngIf="col.search"
+                  [placeholder]="col.placeholder">
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-rowData let-column="columns" >
+            <tr [pSelectableRow]="rowData"
+              >
+              <td style="padding-left: 7px !important;">
+                <p-tableCheckbox [pSelectableRow]="rowData" [value]="rowData" >
+                </p-tableCheckbox>
+              </td>
+              <ng-container *ngFor="let col of selectedColumns">
+                <td>
+                  <span>
+                    <p-cellEditor>
+                      <ng-template pTemplate="output">
+                        <a *ngIf="['palletId','materialDisplayText'].includes(col.field)"  [pTooltip]="tooltipText" tooltipPosition="bottom" tooltipStyleClass="linkTooltip"
+                          (click)="routeDetailsPage(col.field,rowData)" class="gridLink">{{rowData[col.field]}}</a>
+                        <span *ngIf="col.field.endsWith('DateTime')">{{rowData[col.field] | date : 'MM/dd/yyyy HH:mm'}}</span>
+                        <span
+                          *ngIf="!['palletId','materialDisplayText'].includes(col.field) && !col.field.endsWith('DateTime')">{{rowData[col.field]}}</span>
+                      </ng-template>
+                    </p-cellEditor>
+                  </span>
+                </td>
+              </ng-container>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="emptymessage">
+            <tr>
+              <td></td>
+              <td colspan="12" style="text-align: center!important">No data found.</td>
+            </tr>
+          </ng-template>
+
+          <ng-template pTemplate="summary">
+            <div class="md-col-12" style="text-align: center;font-size: small;font-weight: 600;">
+              Total Records: {{m.details.table.data.totalRecords}}
+            </div>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+  </div>
+</div>
+<p-dialog [(visible)]="popup.show" [style]="{width: '45vw'}">
+  <ng-template pTemplate="header">
+    PWM Message
+  </ng-template>
+  <span class="headerStyle">
+    {{popup.message}}
+  </span>
+  <p-footer>
+    <div class="col-md-12 text-right">
+      <div class="col-md-3 mx-2 d-inline">
+        <button pButton pRipple type="button" label="No" style="width: 15%" (click)="popup.show=false;"
+          class="btn-style p-button-outlined p-button-warning noButton"></button>
+      </div>
+      <div class="col-md-3 mr-2 d-inline">
+        <button pButton type="button" label="Yes" (click)="updatePalletStatus()"
+          style="width: 15%; color: #ffff; border-color: #ED990B;"
+          class="btn-style p-button-raised p-button-warning"></button>
+      </div>
+    </div>
+  </p-footer>
+</p-dialog>
+<quality-assurance-pwm-spinner></quality-assurance-pwm-spinner>
+<quality-assurance-pwm-dialog></quality-assurance-pwm-dialog>

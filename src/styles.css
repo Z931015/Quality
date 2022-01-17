@@ -1,0 +1,825 @@
+/*0d0710d77e5d385fd8db4372e234b1ac4f21bb76*/
+/*Quality styles You can add global styles to this file, and also import other style files */
+@import '../node_modules/primeng/resources/themes/nova/theme.css';
+@import '../node_modules/primeng/resources/primeng.min.css';
+@import '../node_modules/primeicons/primeicons.css';
+@import '~@fullcalendar/core/main.css';
+@import '~@fullcalendar/daygrid/main.css';
+@import '~@fullcalendar/timegrid/main.css';
+
+.pageHeader {
+  font-size: 1rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 600;
+}
+
+label {
+  font-size: 12px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 600;
+}
+
+.btn-custom {
+  width: auto !important;
+  overflow: hidden;
+  color: #ffffff;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-bottom: 0.5rem;
+  font-size: 12px;
+  text-align: center;
+  font-family: 'Verdana';
+  height: 28px !important;
+}
+
+.btn-download {
+  border: 1px solid #f49c00;
+  background: white;
+  color: #f49c00;
+  border-radius: 4px;
+  width: 10em !important;
+}
+/* Multiselect */
+.p-multiselect, .p-multiselect-panel .p-multiselect-items .p-multiselect-empty-message, .p-multiselect-panel .p-multiselect-items .p-multiselect-item{
+  font-size: 11px;
+}
+.p-multiselect-panel {
+  width: 170px;
+}
+.p-multiselect .p-multiselect-label {
+  padding: 0.25rem 0.5rem;
+  font-family: Verdana;
+  color: black;
+  font-size: 11px;
+}
+.p-multiselect-filter-icon, .p-multiselect-filter-container {
+  display:none;
+}
+.p-multiselect-filter-container .p-inputtext {
+  border: none;
+  font-size: 11px;
+  color: black;
+  pointer-events: none;
+}
+.p-multiselect-panel .p-multiselect-header {
+  font-size: 11px;
+  color: black;
+  display: flex;
+}
+.p-multiselect-panel .p-multiselect-header .p-multiselect-close {
+  display: none;
+}
+.p-multiselect-panel .p-multiselect-items .p-multiselect-item.p-highlight {
+  background: white;
+  color: black;
+}
+.p-multiselect:not(.p-disabled).p-focus {
+  box-shadow: 0 0 0 0 white;
+  border-color: #a6a6a6;
+}
+.p-multiselect-panel .p-multiselect-items .p-multiselect-item:focus {
+  box-shadow: 0 0 0 0 white;
+}
+.p-multiselect .p-multiselect-label.p-placeholder {
+  color: #666666;
+}
+
+/* Customize Display Button */
+.custom-display-btn {
+  width: max-content;
+  outline-color: white;
+  border: white;
+  box-shadow: 2px 2px 2px 2px #ccc;
+  border-radius: 0px 0px 6px 6px;
+  color: black;
+  font-weight: bold;
+  height: 32px;
+  font-size: 12px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  cursor: pointer;
+}
+.custom-display-btn.p-multiselect .p-multiselect-label {
+  padding: 0.5rem 0.5rem;
+  font-size: 12px;
+}
+.custom-display-btn.p-multiselect:not(.p-disabled).p-focus, .custom-display-btn.p-multiselect-panel .p-multiselect-items .p-multiselect-item:focus {
+  outline-color: white;
+  border: white;
+  box-shadow: 2px 2px 2px 2px #ccc;
+  border-radius: 0px 0px 6px 6px;
+}
+/* Customize display icon */
+.pi-cog:before{
+  content: "\e94a";
+  color: #f49c00;
+  margin-left: 10px;
+}
+
+.p-checkbox .p-checkbox-box .p-checkbox-icon {
+  background-color: white;
+  color: orange;
+}
+@media (max-width: 767px) {/* xs or col */
+  .custom-checkBox-width {
+    width: 10%;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {/* sm */
+  .custom-checkBox-width {
+    width: 5%;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) { /* md */
+  .custom-checkBox-width {
+    width: 4%;
+  }
+}
+@media (min-width: 1200px) { /* lg or xl */
+  .custom-checkBox-width {
+    width: 3%;
+  }
+}
+
+.linkTooltip {
+  font-size: 10px;
+  font-weight: bold;
+  color: #f49c00!important;
+}
+
+.p-tooltip-text{
+  background-color: #f59b14ec !important;
+}
+
+/* .p-multiselect .p-multiselect-trigger {
+  margin-bottom: 3px;
+} */
+
+.p-message.p-message-success .p-message-close{
+  display: none;
+}
+
+.p-message.p-message-error .p-message-close {
+  display: none;
+}
+
+.p-column-filter
+{
+  font-weight: normal;
+    color: #333;
+    background: #fff;
+    padding: .429em;
+    border: 1px solid #a6a6a6;
+    transition: border-color .2s;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    font-family: 'Verdana' !important;
+    font-size: 11px !important;
+    margin-top: 5px !important;
+}
+/*Start--to avoid blue-color while sorting */
+
+.p-datatable .p-sortable-column.p-highlight {
+  color: black;
+  background: transparent;
+}
+
+.p-datatable .p-sortable-column:hover {
+  color: black;
+  border-color: transparent;
+}
+
+.p-datatable .p-sortable-column .p-sortable-column-icon {
+  color: transparent;
+  margin-left: 0.5rem;
+}
+
+.p-datatable .p-sortable-column.p-highlight {
+  background: transparent;
+  color: black;
+}
+
+.p-datatable .p-sortable-column.p-highlight .p-sortable-column-icon {
+  color: black;
+}
+
+.p-datatable .p-sortable-column {
+  outline-color: transparent;
+  display: inline-flex;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+}
+
+.p-datatable .p-sortable-column.p-highlight:hover {
+  background: transparent;
+  color: black;
+}
+
+.p-datatable .p-sortable-column.p-highlight:hover .p-sortable-column-icon {
+  color: black;
+}
+
+.p-datatable .p-sortable-column:focus {
+  box-shadow: inset 0 0 0 0.2rem transparent;
+  outline: 0 none;
+}
+
+.p-datatable .p-sortable-column:not(.p-highlight):hover {
+  background: transparent;
+}
+
+/*End-- to avoid blue-color while sorting */
+.p-button.p-button-text {
+ color: rgb(244, 156, 0);
+ border-color: transparent;
+}
+.p-link:focus {
+  outline: 0 none;
+  outline-offset: 0;
+  box-shadow: 0 0 0 0.1rem rgb(244, 156, 0);
+}
+
+.p-button.p-button-text:enabled:hover {
+  background: rgb(244, 156, 0);
+  color: #333333;
+  border-color: transparent;
+}
+
+/* paginator color */
+.p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+ background:  rgb(244, 156, 0);
+ border-color:  rgb(244, 156, 0);
+ color: #ffffff;
+}
+
+.content-inside {
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+  }
+
+  .content {
+  min-height: calc(100vh - 72px);
+  }
+  .icons {
+    height: 1.4em;
+    margin-left: .5em;
+  }
+  .btn-custom {
+    width: auto !important;
+    overflow: hidden;
+    color: #ffffff;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 0.5rem;
+    font-size: 12px;
+    text-align: center;
+    font-family: 'Verdana';
+    height: 28px !important;
+  }
+
+  .btn-search {
+    border: 1px solid #f49c00;
+    background: #f49c00;
+    border-radius: 3px;
+  }
+
+  .btn-addnew {
+    width: 9em !important;
+    border: 1px solid #8cc63f;
+    background: #8cc63f;
+    color: white;
+    border-radius: 3px;
+  }
+
+/* main heading*/
+  .heading {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+   font-style: normal;
+   font-weight: bold;
+   font-size: 15px !important;
+   height: 25px;
+   display: flex;
+   align-items: center;
+   color: #232323;
+ }
+/*sub-heading */
+ .subHeading {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px !important;
+  line-height: 19px !important;
+  /* margin-top: 5px; */
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+/* label heading*/
+.labelHeading {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px !important;
+  line-height: 19px !important;
+}
+/*Start -- p-message box*/
+.p-message.p-message-success {
+  color: green;
+  height: 30px;
+}
+
+.p-message .p-message-wrapper {
+  height: 15px;
+  font-size: 11px;
+  font-family: Verdana;
+}
+
+.p-message.p-message-success .p-message-icon {
+  color: green;
+  font-size: 12px;
+}
+
+/* .p-message.p-message-error .p-message-icon {
+  display: none;
+} */
+/*end -- p-message box*/
+/* Tab view */
+.p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
+  background: #fdf6ea;
+  border-color: #c8c8c8;
+  color: #f49c00;
+  border-bottom: 3px solid #f49c00;
+  font-size: small;
+}
+.p-tabview .p-tabview-nav li .p-tabview-nav-link:not(.p-disabled):focus {
+  box-shadow: none;
+}
+.p-tabview .p-tabview-nav li {
+  margin: 0;
+  min-width: 134px;
+}
+.p-tabview .p-tabview-nav li:hover {
+  background-color: #fff;
+}
+.p-tabview .p-tabview-nav li .p-tabview-nav-link{
+  background-color: #fff;
+  font-size: small;
+}
+.p-tabview .p-tabview-panels {
+  background: #ffffff;
+  padding: none;
+  border: none;
+}
+/* Checkbox */
+.p-checkbox .p-checkbox-box.p-highlight {
+  border: 1px solid #a6a6a6 !important;
+  background: white !important;
+}
+/* Radio button */
+.p-radiobutton-label{
+  white-space: nowrap;
+  font-size:12px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 600;
+}
+.p-radiobutton .p-radiobutton-box .p-radiobutton-icon {
+  width: 12px;
+  height: 12px;
+  background-color: #f49c00;
+}
+.p-radiobutton .p-radiobutton-box.p-highlight {
+  border-color: #f49c00;
+  background: white;
+}
+.p-radiobutton .p-radiobutton-box.p-highlight:not(.p-disabled):hover {
+  border-color: #f49c00;
+  background: #f49c00;
+}
+.p-field-checkbox, .p-field-radiobutton{
+  margin-bottom: 0rem;
+}
+.p-radiobutton .p-radiobutton-box:not(.p-disabled).p-focus {
+  box-shadow: none;
+  border-color: #f49c00;
+}
+/* Grid - HyperLink */
+a.gridLink{
+cursor: pointer;
+display: inline-block;
+color: blue !important;
+}
+/* Label - HyperLink */
+a.labelLink{
+  cursor: pointer;
+  font-size: 12px !important;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 600;
+  display: inline-block;
+  color: blue !important;
+}
+a.link {
+  cursor: pointer;
+  font-size: 12px !important;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 600;
+  display: inline-block;
+  color: blue !important;
+}
+
+.error-message {
+  color: red !important;
+  font-size: 11px !important;
+  font-family: 'Verdana';
+}
+
+.primary-btn {
+  border: 1px solid #f49c00;
+  background: #f49c00;
+  color: white;
+  height: 26px;
+  width: 85px;
+  font-family: verdana;
+  font-weight: 600;
+  font-size: 12px;
+  border-radius: 4px;
+}
+
+.save-btn {
+  border: 1px solid #f49c00;
+  background: #f49c00;
+  color: white;
+  height: 26px;
+  width: 50px;
+  font-family: verdana;
+  font-weight: 600;
+  font-size: 12px;
+  border-radius: 4px;
+}
+
+.p-inline-message .p-inline-message-text {
+  font-size: 12px !important;
+  width: 100%;
+}
+
+.p-inline-message.p-inline-message-error {
+  background: #f8b7bd;
+  border: 0 none;
+  border-width: 0;
+  color: #212121;
+  width: 100%;
+}
+
+.p-inline-message.p-inline-message-success {
+  background: #8be28b;
+  color: rgb(23, 24, 23);
+  width: 100%;
+}
+
+.disable-btn {
+  background: white;
+  color: #f49c008c;
+  height: 26px;
+  width: 90px;
+  font-family: verdana;
+  font-size: 12px;
+  border-radius: 4px;
+  border: 1px solid #f49c008c;
+}
+
+.rowHighlight {
+  background-color: #ffa50052 !important;
+}
+
+.printButton {
+  border: 1px solid #f49c00;
+  background: white;
+  color: #f49c00;
+  height: 26px;
+  width: 85px;
+  font-family: verdana;
+  font-size: 12px;
+  border-radius: 4px;
+}
+
+.excelButton {
+  border: 1px solid #f49c00;
+  background: white;
+  color: #f49c00;
+  height: 26px;
+  width: 135px;
+  font-family: verdana;
+  font-size: 12px;
+  border-radius: 4px;
+}
+
+.excelButton1 {
+  border: 1px solid #f49c00;
+  background: white;
+  color: #f49c00;
+  height: 26px;
+  width: 115px;
+  font-family: verdana;
+  font-size: 12px;
+  border-radius: 4px;
+}
+
+
+.resetButton {
+  border: 1px solid #f49c00;
+  background: white;
+  color: #f49c00;
+  height: 26px;
+  width: 85px;
+  font-family: verdana;
+  font-size: 12px;
+  border-radius: 4px;
+}
+
+.scanButton {
+  border: 1px solid white !important;
+  background: #f49c00 !important;
+  color: white !important;
+  font-weight: 600;
+  height: 26px;
+  border-radius: 4px;
+  font-size: 12px;
+  width: 109px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.addButton {
+  border: 1px solid #f49c00;
+  background: white;
+  color: #f49c00;
+  height: 26px;
+  width: 85px;
+  font-family: verdana;
+  font-size: 12px;
+  border-radius: 4px;
+}
+
+.backButton {
+  border: 1px solid #f49c00;
+  background: white;
+  color: #f49c00;
+  height: 26px;
+  width: 85px;
+  font-family: verdana;
+  font-size: 12px;
+  border-radius: 4px;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  pointer-events: all !important;
+}
+
+/* Autocomplete Style */
+.p-inputtext {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 11px;
+  color: black;
+  height: 25px;
+  width: 100%;
+}
+.p-button.p-button-icon-only {
+  height: 25px;
+  color: #a6a6a6;
+  background: #ffffff;
+  border-color: #a6a6a6;
+  border-left: none;
+}
+.p-autocomplete {
+  width: 100%;
+}
+.p-autocomplete-panel {
+  font-size: 11px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.p-button:focus {
+  box-shadow: 0 0 0 0 white;
+  color: #a6a6a6;
+}
+.p-button:enabled:hover {
+  background: white;
+  color: #a6a6a6;
+  border-color: #a6a6a6;
+}
+.p-inputtext:enabled:focus {
+  box-shadow: 0 0 0 0 white;
+  border-color: #a6a6a6;
+}
+.p-autocomplete-panel .p-autocomplete-items .p-autocomplete-item:hover {
+  color: #333333;
+  background: #f49c00;
+}
+/* Grid filter textbox */
+.gridFilter {
+  font-size: 11px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border-radius: 3px;
+  height: 24px;
+  width: 100%;
+  padding-left: 3px;
+  border: 1px solid #a6a6a6;
+}
+
+/* Split button */
+.custom-split-btn .p-button.p-button-icon-only {
+  background-color: #f49c00;
+  border-color: #f49c00;
+  color: white;
+  margin-top: 1px;
+  border:1px;
+  height: 24px;
+}
+.custom-split-btn .p-button, .custom-split-btn .p-button:enabled:hover {
+  border-color: white;
+  color: white;
+}
+.custom-split-btn.p-splitbutton .p-splitbutton-defaultbutton {
+  border-right: none;
+  background-color: #f49c00;
+  font-weight: bold;
+  width:60%;
+  border: 1px solid;
+  height: 26px;
+  border-radius: 5px 0px 0px 5px;
+  font-size: 12px;
+}
+.p-splitbutton .p-menu {
+  width: 100px;
+  left: 0.5852px;
+}
+.p-menu .p-menuitem-link, .p-menu .p-menuitem-link:hover {
+  font-size: 11px;
+  color: #f49c00
+}
+.p-menu .p-menuitem-link .p-menuitem-text {
+  color: #020202;
+}
+.p-menu .p-menuitem-link .p-menuitem-text:hover {
+  color: #f49c00;
+  font-weight: bold;
+}
+.p-menu .p-menuitem-link:not(.p-disabled):hover .p-menuitem-text {
+  color: #f49c00;
+  font-weight: bold;
+}
+/* Calendar */
+.p-datepicker table {
+  margin: 0;
+}
+.p-datepicker table th {
+  padding: 0.5rem;
+}
+.p-datepicker table td {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 12px;
+  padding: 0.1rem;
+}
+.p-datepicker table th>span {
+  font-size: 10px;
+}
+.p-datepicker table td > span {
+  width: 1.3rem;
+  height: 1.3rem;
+  font-family: verdana;
+  font-size: 11px;
+  border-radius: 3px;
+  transition: background-color 0.2s, box-shadow 0.2s;
+  border: 1px solid transparent;
+  padding: 0 0 0 0;
+}
+.p-datepicker table td>span.p-highlight {
+  color: #ffffff;
+  background: #f49c00;
+}
+.p-datepicker .p-datepicker-header {
+  padding: 0rem;
+}
+.p-datepicker .p-datepicker-header .p-datepicker-title .p-datepicker-month {
+  margin-right: 0.5rem;
+  font-family: Verdana;
+  font-size: 11px;
+}
+.p-datepicker .p-datepicker-header .p-datepicker-title select {
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+  font-family: Verdana;
+  font-size: 11px;
+}
+.p-datepicker .p-datepicker-header .p-datepicker-prev, .p-datepicker .p-datepicker-header .p-datepicker-next {
+  width: 3rem;
+  height: 1rem;
+  color: #a6a6a6;
+  border: 0 none;
+  background: transparent;
+  border-radius: 51%;
+  transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+}
+.p-datepicker:not(.p-datepicker-inline) {
+  width: 18rem;
+}
+.p-datepicker .p-datepicker-buttonbar {
+  padding: 0.1rem 0 0.1em 0;
+  border-top: 0px solid #d8dae2;
+}
+.p-datepicker .p-timepicker {
+ max-height: 55px;
+}
+.p-datepicker .p-timepicker span{
+ font-size: 13px;
+ margin: 2px;
+}
+.p-datepicker .p-timepicker button {
+  width: 0.9rem;
+  height: 0.9rem;
+  color: #a6a6a6;
+  border: 0 none;
+  background: transparent;
+  border-radius: 50%;
+  transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+}
+.p-datepicker table td.p-datepicker-today > span.p-highlight {
+  background: #f49c00;
+}
+/* Dropdown */
+.p-dropdown-label.p-inputtext {
+  padding: 0.3rem 0.429rem;
+}
+.p-dropdown {
+  font-size: 11px;
+  height: 25px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.p-dropdown-items-wrapper {
+  font-size: 11px;
+}
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
+  background: #f49c00;
+}
+.p-dropdown:not(.p-disabled).p-focus {
+  box-shadow: 0 0 0 0 white;
+  border-color: #a6a6a6;
+}
+/* Textarea */
+.textarea {
+  width: 100%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 11px;
+  border: 1px solid #a6a6a6;
+  border-radius: 0.25rem;
+  padding: 0.375rem 0.75rem;
+  color: black;
+}
+/* Textarea disabled */
+.textarea:disabled {
+  opacity: 1;
+  background: #c0c0c040;
+  color: #495057;
+}
+.p-datatable .p-datatable-tbody>tr>td {
+  white-space: break-spaces !important;
+  word-break: break-all;
+}
+.p-dialog .p-dialog-header {
+  border-bottom: 0 none;
+  background: rgb(244, 156, 0);
+  color: #ffffff;
+  padding: 1.5rem;
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
+  padding: 0.571rem 1rem;
+}
+
+.reject-button {
+  border: 1px solid #f49c00;
+  background: white;
+  color: #f49c00;
+  height: 26px;
+  font-family: verdana;
+  font-weight: 600;
+  font-size: 12px;
+  border-radius: 4px;
+  width: 6rem;
+}
+.accept-button {
+  border: 1px solid white;
+  background: #f49c00;
+  color: white;
+  height: 26px;
+  font-family: verdana;
+  font-weight: 600;
+  font-size: 12px;
+  border-radius: 4px;
+  width: 6rem;
+}
+.p-dialog .p-dialog-footer button{
+  border: 1px solid white;
+  background: #f49c00;
+  color: white;
+  height: 26px;
+  font-family: verdana;
+  font-weight: 600;
+  font-size: 12px;
+  border-radius: 4px;
+  width: 6rem;
+}

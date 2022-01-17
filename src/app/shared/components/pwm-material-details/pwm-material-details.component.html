@@ -1,0 +1,112 @@
+<div class="container">
+
+    <div class="row" style="margin-top: 2%;">
+        <div class="col-lg-6 col-sm-8">
+            <div class="heading">Material {{materialNum}}</div>
+        </div>
+    </div><br>
+
+    <div class="row">
+        <div class="col-md-8">
+            <p-selectButton [options]="tabs" [(ngModel)]="selectedTab" optionLabel="tabName" optionValue="tabCode"
+                [multiple]="false"></p-selectButton>
+        </div>
+        <div class="col-md-4">
+            <button *ngIf="selectedTab == 'CR'" class="printButton float-right" (click)="onPrint('CR')">
+                Print
+            </button>
+            <button *ngIf="selectedTab == 'BOM'" class="printButton float-right" (click)="onPrint('BOM')">
+                Print
+            </button>
+            <button type="button" class="backButton p-mr-2 float-right" (click)="back($event)">Back
+            </button>
+        </div>
+    </div>
+
+
+    <div class="pwm-main-content">
+        <ng-container *ngIf="selectedTab == 'CR'">
+            <div class="p-col-12" class="msgBar">
+                <div>
+                    <p-message severity="error" text={{message}} *ngIf="error_message"></p-message>
+                </div>
+            </div>
+            <div class="row">
+                <div class="card">
+                    <p-table [columns]="cols" [value]="rowDataChar" [rows]="10"
+                        [paginator]="true" [showCurrentPageReport]="true">
+                        <ng-template pTemplate="header" let-columns>
+                            <tr>
+                                <th *ngFor="let col of columns" [ngStyle]="{width:col.width}">
+                                    <span pSortableColumn="{{col.field}}"> {{col.header}}
+                                        <p-sortIcon field="{{col.header}}"></p-sortIcon>
+                                    </span> <br>
+                                </th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-rowData let-columns="columns">
+                            <tr style="height:34px">
+                                <td *ngFor="let col of columns">
+                                    {{rowData[col.field]}}
+                                </td>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="summary">
+                            <div class="md-col-12 summary">
+                                Total Rows : {{totalRecordsChar}}
+                            </div>
+                        </ng-template>
+                    </p-table>
+                </div>
+            </div><br>
+        </ng-container>
+        <ng-container *ngIf="selectedTab == 'BOM'">
+            <div class="p-col-12" class="msgBar">
+                <div>
+                    <p-message severity="error" text={{messageBom}} *ngIf="error_messageBom"></p-message>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <p-table #dt [columns]="bomCols" [value]="rowDataBOM" selectionMode="single" [responsive]="true"
+                    class="table-view" [autoLayout]="true" [(selection)]="selectedRecords" dataKey="id"
+                    [paginator]="true" [rows]='10'>
+                    <ng-template pTemplate="header" let-columns>
+                        <tr>
+                            <th *ngFor="let col of columns" [ngStyle]="{width:col.width}">
+                                <span pSortableColumn="{{col.field}}"> {{col.header}}
+                                    <p-sortIcon field="{{col.header}}"></p-sortIcon>
+                                </span> <br>
+                            </th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-rowData let-columns="columns" let-editing="editing"
+                        let-ri="rowIndex">
+                        <tr [pEditableRow]="rowData">
+                            <td *ngFor="let col of columns">
+                                <span>
+                                    <p-cellEditor>
+                                        <ng-template pTemplate="output">
+                                            <span>{{rowData[col.field]}}</span>
+                                        </ng-template>
+                                    </p-cellEditor>
+                                </span>
+                            </td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="emptymessage">
+                        <tr>
+                            <td colspan="13" class="emptymessage">No data found.</td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="summary">
+                        <div class="md-col-12 summary">
+                            Total Records : {{totalRecordsBom}}
+                        </div>
+                    </ng-template>
+                </p-table>
+            </div>
+        </ng-container>
+    </div>
+
+
+</div>

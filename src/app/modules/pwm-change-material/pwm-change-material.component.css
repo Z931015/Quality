@@ -1,0 +1,974 @@
+.heading {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 15px !important;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  color: #232323;
+}
+
+.font {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px !important;
+  line-height: 19px !important;
+  margin-top: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.asteriskColor {
+  color: rgb(244, 156, 0);
+}
+
+* {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h5 {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.labelarea {
+  font-size: 15px;
+}
+
+.table {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px !important;
+  line-height: 19px !important;
+  margin-top: 20px;
+}
+
+.btn-search {
+  color: #ffffff;
+  background-color: rgb(244, 156, 0);
+  width: 7rem;
+  font-weight: bold;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 13px;
+  height: 30px;
+  border-radius: 5px;
+  margin-top: 20px;
+  /* width: 100%; */
+  border-color: rgb(244, 156, 0);
+}
+
+.gen {
+  color: #ffffff;
+  background-color: rgb(244, 156, 0);
+  width: 7rem;
+  font-weight: bold;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 13px;
+  height: 30px;
+  border-radius: 5px;
+  margin-top: 20px;
+  margin-left: 26px;
+  width: 80%;
+  border-color: rgb(244, 156, 0);
+}
+
+.help-block {
+  font-size: 10px;
+  color: red;
+  width: 100%;
+  font-family: 'Verdana'
+}
+:host>>>.selectedRow {
+  background-color: red;
+}
+.p-column-filter {
+  height: 33px;
+  border-radius: 3px;
+  margin-top: 0px !important;
+}
+
+.col-2 {
+  flex: 0 0 auto;
+  width: 11.666667%;
+}
+
+.coil-header {
+  font-weight: bold;
+}
+
+h5 {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.buttonsClass {
+  border: 1px solid;
+  padding: 3px 6px;
+  font-weight: bold;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 13px;
+  height: 30px;
+  border-radius: 5px;
+  background: transparent;
+  color: rgb(244, 156, 0);
+  border-bottom: 2px solid rgb(244, 156, 0);
+  text-align: center !important;
+}
+
+.pwm-btn-icon {
+  background-color: transparent;
+  border-color: transparent;
+  margin-left: 0rem;
+  /* width: 25%; */
+  padding: 0%;
+}
+
+.btn-serach:hover {
+  color: #ffffff;
+  background-color: rgb(244, 156, 0);
+  font-weight: bold;
+}
+
+.btn-action-list {
+  border: 1px solid #f49c00;
+  background: white;
+  color: #f49c00;
+  margin-left: 3px;
+  height: 26px;
+  width: 85px;
+  padding: 2px;
+  margin-top: 1px;
+  font-family: verdana;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.btn-customize {
+  color: rgb(0, 0, 0);
+  background-color: #ffffff;
+  width: 7rem;
+  font-weight: bold;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 13px;
+  height: 30px;
+  border-radius: 5px;
+  border: 1px solid #ffffff;
+  box-shadow: 2px 5px #ffffff;
+}
+
+:host>>>.btn-customize:hover {
+  color: black;
+  border-color: #c8c8c8;
+  background: #ffffff;
+  font-weight: bold;
+}
+
+.btn-new-consuptions {
+  color: rgb(255, 255, 255);
+  background-color: rgb(41, 208, 0);
+  width: 175px;
+  font-weight: bold;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 13px;
+  height: 30px;
+  border-radius: 5px;
+  border: 1px solid #ffffff;
+}
+
+:host>>>.btn-new-consuptions:hover {
+  color: rgb(255, 255, 255);
+  background-color: rgb(41, 208, 0);
+  border: 1px solid #ffffff;
+  font-weight: bold;
+}
+
+:host>>>p-sorticon {
+  vertical-align: bottom;
+  text-align-last: justify;
+}
+
+.reportType {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px !important;
+  line-height: 19px !important;
+}
+
+:host>>>.p-datatable .p-datatable-tbody>tr>td:last-child {
+ text-align: left !important;
+}
+
+:host>>>.p-datatable .p-datatable-tbody>tr>td:first-child {
+  vertical-align: middle;
+}
+
+:host>>>.p-datatable .p-datatable-tbody>tr>td {
+ text-align: left;
+ border-width: 1px;
+ font-size: 11px;
+ font-family: 'Verdana' !important;
+ border-bottom: 0.5px #c8c8c8 !important;
+ padding: 0.3rem 0.3rem 0.3rem 0.3rem;
+}
+
+:host>>>.p-datatable .p-datatable-thead>tr>th:last-child {
+ text-align: left !important;
+}
+
+:host>>>.p-datatable .p-datatable-header {
+  background: none;
+  border: 0px solid #ffffff;
+}
+
+#list {
+  width: 176px;
+  height: 60px;
+}
+
+:host>>>.p-button.p-button-warning, .p-buttonset.p-button-warning>.p-button {
+  color: #ffffff;
+  background: rgb(244, 156, 0);
+  border: 1px solid rgb(244, 156, 0);
+  height: 33px;
+  width: 30px;
+  border-radius: 5px 5px;
+}
+
+:host>>>.p-button.p-button-danger, .p-buttonset.p-button-danger>.p-button {
+  color: #ffffff;
+  background: #e91224;
+  border: 1px solid #e91224;
+  height: 33px;
+  width: 30px;
+  border-radius: 5px 5px;
+}
+
+:host>>>.pi-sort-alt:before {
+  /* content: "\e99e"; */
+  content: url(../../../assets/images/sort-icon.jpg)!important;
+}
+:host>>>.p-inputtext {
+  font-size: 11px !important;
+}
+:host>>>p-sorticon {
+  vertical-align: bottom;
+  text-align-last: justify;
+}
+
+:host>>>.p-datatable .p-datatable-header {
+  background: none;
+  /* color: #333333; */
+  border: 0px solid #ffffff;
+}
+
+:host>>>.p-sortable-column-icon .pi .pi-fw .pi-sort-alt {
+  font-weight: smaller !important;
+}
+
+:host>>>.pi-clone {
+  color: rgb(244, 156, 0) !important;
+}
+
+:host>>>thead, tbody, tfoot, tr, td, th {
+  font-size: 11px;
+}
+
+/* The container */
+
+.rad {
+  font-style: normal;
+  font-weight: bold;
+  display: block;
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 0px;
+  cursor: pointer;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+
+.rad input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+
+.checkmark {
+  position: absolute;
+  top: 4px;
+  left: 2px;
+  height: 14px;
+  width: 14px;
+  background-color: #ccc;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+
+.rad:hover input~.checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+
+.rad input:checked~.checkmark {
+  background-color: rgb(244, 156, 0);
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+
+.rad input:checked~.checkmark:after {
+  display: block;
+}
+
+:host>>>.p-datatable .p-datatable-tfoot>tr>td {
+  text-align: left;
+  padding: 0.571rem 0.857rem;
+  border: 0.5px #c8c8c8;
+  border-width: 1px;
+  font-weight: 700;
+  color: #333333;
+  background: #c8c8c8 !important;
+}
+
+/* :host>>>.p-datatable table {
+ border: 0.1rem solid rgb(105, 120, 130);
+} */
+
+:host>>>thead tr.ng-star-inserted {
+  border-bottom: 2px solid rgb(105, 120, 130);
+}
+
+:host>>>.p-datatable .p-datatable-thead>tr>th {
+ background: #ffffff;
+ vertical-align: super;
+ white-space: nowrap;
+ font-family: 'Verdana' !important;
+ font-size: 11px !important;
+ padding: 0.3rem 0.3rem;
+ width:fit-content;
+}
+
+::ng-deep .unloadDatePlaceholder .p-inputtext {
+  width: 95%;
+  height: 27px !important;
+  font-size: 0.7rem !important;
+  margin-top: 5% !important;
+}
+
+/*Start--to avoid blue-color while sorting */
+
+:host>>>.p-datatable .p-sortable-column.p-highlight {
+  color: black;
+  background: transparent;
+}
+
+:host>>>.p-datatable .p-sortable-column:hover {
+  color: black;
+  border-color: transparent;
+}
+
+:host>>>.p-datatable .p-sortable-column .p-sortable-column-icon {
+  color: transparent;
+  margin-left: 0.5rem;
+  /* height: 15px; */
+}
+
+:host>>>.p-datatable .p-sortable-column.p-highlight {
+  background: transparent;
+  color: black;
+}
+
+:host>>>.p-datatable .p-sortable-column.p-highlight .p-sortable-column-icon {
+  color: black;
+}
+
+:host>>>.p-datatable .p-sortable-column {
+  outline-color: transparent;
+}
+
+:host>>>.p-datatable .p-sortable-column.p-highlight:hover {
+  background: transparent;
+  color: black;
+}
+
+:host>>>.p-datatable .p-sortable-column.p-highlight:hover .p-sortable-column-icon {
+  color: black;
+}
+
+:host>>>.p-datatable .p-sortable-column:focus {
+  box-shadow: inset 0 0 0 0.2rem transparent;
+  outline: 0 none;
+}
+
+:host>>>.p-datatable .p-sortable-column:not(.p-highlight):hover {
+  background: transparent;
+}
+
+/*End-- to avoid blue-color while sorting */
+
+:host>>>.p-button.p-button-text {
+  color: rgb(244, 156, 0);
+  border-color: transparent;
+  font-size: 12px;
+}
+
+:host>>>.p-link:focus {
+  outline: 0 none;
+  outline-offset: 0;
+  box-shadow: 0 0 0 0.1rem rgb(244, 156, 0);
+}
+
+:host>>>.p-button.p-button-text:enabled:hover {
+  background: transparent;
+  color: rgb(244, 156, 0);
+  border-color: transparent;
+}
+
+/* paginator color */
+
+:host>>>.p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+  background: rgb(244, 156, 0);
+  border-color: rgb(244, 156, 0);
+  color: #ffffff;
+}
+
+.dateInput {
+  height: 22px;
+  width: 130px !important;
+}
+
+:host>>>.p-inputtext.p-error, .p-inputtext.p-invalid, .p-inputtext.ng-dirty.ng-invalid {
+  border-color: #333333;
+  ;
+}
+
+:host>>>.p-link:focus {
+  outline: 0 none;
+  outline-offset: 0;
+  box-shadow: 0 0 0 0.1rem rgb(244, 156, 0);
+}
+
+/* paginator color */
+
+:host>>>.p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+  background: rgb(244, 156, 0);
+  border-color: rgb(244, 156, 0);
+  color: #ffffff;
+}
+
+.dateInput {
+  width: 130px !important;
+}
+
+:host>>>.p-inputtext.p-error, .p-inputtext.p-invalid, .p-inputtext.ng-dirty.ng-invalid {
+  border-color: #333333;
+  ;
+}
+
+.searchResultText {
+  font-size: 13px!important;
+  font-family: 'Segoe UI'!important;
+  color: #0b9ad3!important;
+  font-weight: 700!important;
+}
+
+:host>>>.p-datatable table {
+  border: 0.1rem solid rgb(105, 120, 130);
+}
+
+.img {
+  height: "20px";
+}
+
+.rowWidth {
+  width: 20%;
+}
+
+.asteriskColor {
+  color: rgb(244, 156, 0);
+}
+
+.actionButton {
+  text-align: center;
+}
+
+p {
+  margin: 0;
+}
+
+.confirmation-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hide the browser's default checkbox */
+
+.checkbox {
+  padding-left: 5px;
+}
+
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Style the checkmark/indicator */
+
+.container {
+  display: block;
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 11px;
+  font-style: Verdana;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.container .checkmark:after {
+  left: 4px;
+  top: 0px;
+  width: 7px;
+  height: 10px;
+  border: solid #ffffff;
+  border-width: 0 1px 1px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+:host>>>.p-datatable .p-datatable-tbody>tr {
+  height: 26px;
+}
+
+.btn-download {
+ border: 1px solid #f49c00;
+ background: #ffffff;
+ color: #f49c00;
+ border-radius: 5px;
+ width: 85px!important;
+ font-weight: bold;
+ margin-top: 1px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+ font-size: 13px;
+ height: 29px;
+}
+
+:host>>>.p-hidden-accessible {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+/* .page {
+ overflow-x: auto;
+ overflow-y: auto;
+} */
+
+.table-view {
+  margin-left: 2%;
+  margin-top: 5px !important;
+  font-size: 15px !important;
+  font-family: 'Verdana' !important;
+  color: rgb(131, 131, 131) !important;
+}
+
+:host>>>.p-dialog {
+  width: 100%;
+}
+
+/* css for confirm dialog box. */
+
+:host>>>div.p-dialog.p-confirm-dialog.p-component.ng-star-inserted {
+  width: 60rem;
+}
+
+:host>>>div.p-dialog-header {
+  background: rgb(244, 156, 0);
+  color: #ffffff;
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
+  height: 3rem;
+  border: none;
+}
+
+:host>>>button.p-dialog-header-icon.p-dialog-header-close.p-link.ng-star-inserted {
+  color: #ffffff;
+}
+
+:host>>>div.p-dialog-footer.ng-star-inserted {
+  border-top: none;
+  background: #ffffff;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+:host>>>span.p-confirm-dialog-message {
+  margin-left: 0 !important;
+  font-weight: bold;
+  font-size: 15px;
+}
+:host>>>.p-dialog .p-dialog-header {
+  background: #ED990B;
+  font-weight: bold;
+  height: 50px;
+  color: #fff;
+}
+
+:host>>>.headerStyle {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 13px !important;
+  height: 25px;
+}
+:host>>>.noButton {
+  background-color: transparent!important;
+    color: #ffba01!important;
+    border: 1px solid!important;
+}
+:host>>>.p-dialog .p-dialog-header .p-dialog-header-icon {
+  width: 1rem;
+  height: 1rem;
+  color: #fff;
+}
+
+:host>>>.p-dialog .p-dialog-footer {
+  border-top: none;
+}
+
+button.btn.btn-sm.btn-outline-warning.conf-dialog {
+  border-color: rgb(244, 156, 0);
+  color: rgb(244, 156, 0);
+  font-weight: bold;
+  width: 7rem;
+}
+
+button.btn.btn-sm.btn-outline-warning.conf-dialog:hover {
+  background-color: rgb(244, 156, 0);
+  border-color: rgb(244, 156, 0);
+  color: #ffffff;
+  font-weight: bold;
+  width: 7rem;
+}
+
+.checking {
+  display: block;
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 12.5px;
+  font-style: Verdana;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+
+.checking input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+
+.checkmarkCheckbox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 18px;
+  width: 18px;
+  background-color: #ffff;
+  border: 1px solid;
+}
+
+/* On mouse-over, add a grey background color */
+
+.checking:hover input~.checkmarkCheckbox {
+  background-color: #fff;
+  border: 1px solid;
+}
+
+/* When the checkbox is checked, add a blue background */
+
+.checking input:checked~.checkmarkCheckbox {
+  background-color: rgb(244, 156, 0);
+}
+
+/* Create the checkmarkCheckbox/indicator (hidden when not checked) */
+
+.checkmarkCheckbox:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmarkCheckbox when checked */
+
+.checking input:checked~.checkmarkCheckbox:after {
+  display: block;
+}
+
+/* Style the checkmarkCheckbox/indicator */
+
+.checking .checkmarkCheckbox:after {
+  left: 4px;
+  top: 0px;
+  width: 7px;
+  height: 13px;
+  border: solid #ffffff;
+  border-width: 0 1px 1px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+:host>>>.p-checkbox .p-checkbox-box.p-highlight {
+  border-color: rgb(105, 120, 130) !important;
+  background: none !important;
+  border-radius: 0px !important;
+}
+
+:host>>>.p-checkbox .p-checkbox-box {
+  border-radius: 0px;
+}
+
+.marginTop {
+  margin-top: 2%;
+}
+
+.padding {
+  padding-left: 50px;
+}
+
+.manual {
+  margin-top: 4px;
+}
+
+.reset {
+  float: right;
+  margin-right: 80px;
+}
+
+.search {
+  float: left;
+  position: absolute;
+  right: 0;
+}
+
+.resetMargin {
+  margin-left: 95px;
+}
+.input{
+  border-radius: 3px;
+  overflow: visible;
+  margin-top: 4px;
+  width: 100%;
+  height: 24px;
+  padding-left: 3px;
+  border: 1px solid #6b6969;
+}
+.clearBtn {
+  float: right;
+  margin-right: 100px;
+}
+
+.savebtn {
+  float: left;
+  position: absolute;
+  right: 98px;
+}
+
+.msgBar {
+  padding-left: 0px;
+}
+
+.pCheckbox {
+  width: 3rem
+}
+
+.actionWidth {
+  width: 0.5%;
+}
+
+.actionIcon {
+  text-align: center
+}
+
+:host>>>.p-datatable .p-datatable-thead>tr>th:first-child {
+  vertical-align: middle;
+}
+.pageHeader {
+  font-size: 1rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 600;
+}
+.pageSubHeader {
+  font-size: 1rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 100;
+}
+
+label {
+  font-size: 12px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 600;
+}
+.hiddenColumn {
+  display: none;
+}
+
+
+:host>>>.p-datatable .p-datatable-thead>tr>th {
+  white-space: normal;
+  word-wrap: break-word;
+}
+:host>>>.p-datatable .p-datatable-thead>tr>th {
+ background: #ffffff;
+ /* height: 61px; */
+ padding: 2px;
+}
+:host>>> .p-datatable-thead {
+ font-size: 11px;
+ border: 1.5px solid;
+ white-space: normal;
+ color:#697882;
+}
+:host>>>.hrStyle {
+  margin-bottom: -10px;
+  margin-top: -45px;
+}
+:host>>>.formMargin {
+ margin-top: -16px!important;
+ }
+:host >>>.noPadding{
+  padding: 0px !important;
+}
+@media (max-width: 767px) {/* xs or col */
+  .development{
+    color: orange;
+    }
+  .action-margin{
+    margin-right: 0px;
+    float: right;
+  }
+  .resetClass {
+    margin-left: -60px;
+  }
+  .searchClass {
+    margin-right: 10px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {/* sm */
+  .development{
+    color: green;
+    }
+  .action-margin{
+    margin-right: -5px;
+    float: right;
+  }
+  .resetClass {
+    margin-left: -75px;
+  }
+  .searchClass {
+    margin-right: 20px;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) { /* md */
+  .development{
+    color: blue;
+    }
+.action-margin{
+  margin-right: -5px;
+  float: right;
+}
+.resetClass {
+  margin-left: -30px;
+}
+.searchClass {
+  margin-right: 10px;
+}
+}
+@media (min-width: 1200px) { /* lg or xl */
+  .development{
+    color: red;
+    }
+ .action-margin {
+  margin-right: -5px;
+  float: right;
+}
+.resetClass {
+  margin-left: -30px;
+}
+ }
+:host>>>.p-datatable .p-datatable-tbody > tr.p-highlight {
+  background-color: #ffa50052 !important;
+  color: black;
+}
+:host>>>.span.p-dropdown-label.p-inputtext {
+  height: 23px!important;
+}
+:host >>> .p-dropdown.dropdown-style{
+  height: 26px !important;
+  width: 80% !important;
+  font-size: 8px !important;
+}
+:host >>> .p-dropdown .p-dropdown-label {
+  background: transparent;
+  border: 0 none;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 11px !important;
+  padding: 3px 0 0 5px;
+}
+:host>>>.p-dropdown-items-wrapper {
+  font-size: 11px;
+}
+:host>>>.p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
+  color: #ffffff;
+  background: #f49c00;
+}
+:host>>>.p-dropdown.p-component {
+  height: 26px;
+}
+@media (min-width: 1200px){
+  .p-xl-6 {
+    padding: 1rem !important;
+}
+}

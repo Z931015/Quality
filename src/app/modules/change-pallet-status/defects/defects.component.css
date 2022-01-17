@@ -1,0 +1,787 @@
+.form-control {
+  display: block;
+  max-width: 246px;
+  min-height: 61%;
+  padding: 0.375rem 0.35rem;
+  font-size: 11px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 400;
+  height: 26px;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  border: 1px solid #a6a6a6;
+  background-clip: padding-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+:host >>>.p-datatable-scrollable-header{
+  padding-right: 0px !important;
+}
+label{
+  white-space: nowrap;
+  font-size:12px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 600;
+}
+:host>>>.p-dialog .p-dialog-header {
+  border-bottom: 1px solid #f49c00!;
+  background: #f49c00 ;
+  color: #333333;
+  padding: 1rem;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+}
+
+.col-md-1 {
+  flex: 0 0 auto;
+  width: 11.333333%;
+}
+.col-md-2 {
+  flex: 0 0 auto;
+  width: 16.666667%;
+}
+.col-md-7[_ngcontent-mwt-c122] {
+  flex: 0 0 auto;
+  width: 56.333333%;
+}
+.btn-print{
+  border: 1px solid #f49c00;
+  background: #f49c00;
+  color: white;
+  margin-left: 13px;
+  height: 26px;
+  width: 85px;
+  margin-top:1px;
+  font-family: verdana;
+  font-weight: 600;
+  font-size: 12px;
+  border-radius: 4px;
+}
+.btn-customize {
+    color: rgb(0, 0, 0);
+    background-color: white;
+    width: 7rem;
+    font-weight: bold;
+    font-family: 'Verdana';
+    font-size: 13px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid rgb(214, 212, 212);
+    box-shadow: 2px 5px rgb(243, 242, 242);
+  }
+
+  :host>>>p-sorticon {
+    vertical-align: bottom;
+    text-align-last: justify;
+  }
+  .p-column-filter {
+    width: 100%;
+  }
+
+
+  :host>>>.p-datatable .p-datatable-tbody>tr>td:last-child {
+    vertical-align: middle;
+  }
+
+  :host>>>.p-datatable .p-datatable-tbody>tr>td:first-child {
+    vertical-align: middle;
+  }
+
+  :host>>>.pi-sort-alt:before {
+     content: url(../../../../assets/images/sort-icon.jpg)!important;
+  }
+
+  :host>>>p-sorticon {
+    vertical-align: bottom;
+    text-align-last: justify;
+  }
+
+  :host>>>.p-datatable .p-datatable-header {
+    background: none;
+    /* color: #333333; */
+    border: 0px solid #ffff;
+  }
+  :host>>>.p-sortable-column-icon .pi .pi-fw .pi-sort-alt {
+    font-weight: smaller !important;
+  }
+
+  tr {
+    height: 35px !important;
+  }
+  :host>>>  tfoot, tr, td, th {
+    font-size: 11px;
+  }
+
+  :host>>> .p-datatable-thead {
+    font-size: 11px;
+    border: .5px solid;
+    white-space: normal;
+  }
+
+  :host>>> .p-datatable-tbody {
+    font-size: 11px;
+    border:.5px solid;
+  }
+  :host>>>.pi-clone:before {
+    color: #ffba01;
+  }
+
+  .input{
+    border-radius: 3px;
+    overflow: visible;
+    margin-top: 4px;
+    width: 80px;
+    height: 24px;
+    padding-left: 3px;
+    border: 1px solid #6b6969;
+  }
+
+  :host>>>.p-disabled, .p-component:disabled {
+    opacity: 0.5;
+    /* border: 1px solid black; */
+    /* background-color: silver; */
+}
+.closebtn{
+  width: 15px;
+  margin-left: 20px;
+}
+hr{
+  margin: 0em;
+  border-width: 2px;
+}
+ :host>>>.p-datatable .p-datatable-tbody>tr>td {
+   text-align: left;
+    border: none !important;
+    border-bottom: 1px solid #c8c8c8 !important;
+    border-width: 1px;
+    padding: 1px 1px;
+  }
+
+  .coil-header {
+    font-weight: bold;
+  }
+
+  h5 {
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  .buttonsClass {
+    border: 1px solid;
+    padding: 3px 6px;
+    font-weight: bold;
+    font-family: 'Verdana';
+    font-size: 13px;
+    height: 30px;
+    border-radius: 5px;
+    background: transparent;
+    color: #ffba01;
+    border-bottom: 2px solid #ffba01;
+    text-align: center !important;
+  }
+
+  .btn-serach {
+    color: white;
+    background-color: rgb(244, 156, 0);
+    width: 7rem;
+    font-weight: bold;
+    font-family: 'Verdana';
+    font-size: 13px;
+    height: 30px;
+    border-radius: 5px;
+  }
+
+  .btn-serach:hover {
+    color: white;
+    background-color: rgb(244, 156, 0);
+    font-weight: bold;
+  }
+
+  .btn-customize {
+    color: rgb(0, 0, 0);
+    background-color: white;
+    width: 7rem;
+    font-weight: bold;
+    font-family: 'Verdana';
+    font-size: 13px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid rgb(214, 212, 212);
+    box-shadow: 2px 5px rgb(243, 242, 242);
+  }
+
+  :host>>>.btn-customize:hover {
+    color: black;
+    border-color: #c8c8c8;
+    background: white;
+    font-weight: bold;
+  }
+
+  .btn-new-consuptions {
+    color: rgb(255, 255, 255);
+    background-color: rgb(41, 208, 0);
+    width: 175px;
+    font-weight: bold;
+    font-family: 'Verdana';
+    font-size: 13px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid rgb(214, 212, 212);
+  }
+
+  :host>>>.btn-new-consuptions:hover {
+    color: rgb(255, 255, 255);
+    background-color: rgb(41, 208, 0);
+    border: 1px solid rgb(214, 212, 212);
+    font-weight: bold;
+  }
+
+  .btnexport {
+    color: #ffba01;
+    border: 1px solid;
+    font-weight: bold;
+    font-family: 'Verdana';
+    font-size: 13px;
+    height: 30px;
+    border-radius: 5px;
+    background: transparent;
+  }
+
+  .btnprint {
+    color: #ffba01;
+    border: 1px solid;
+    font-weight: bold;
+    font-family: 'Verdana';
+    font-size: 13px;
+    height: 30px;
+    border-radius: 5px;
+    background: transparent;
+  }
+  :host>>>.p-datatable .p-datatable-thead>tr>th {
+    padding: 2px;
+   text-align: left;
+    border: none;
+    background: #fff;
+    vertical-align: initial;
+    font-family: 'Verdana' !important;
+    font-size: 11px !important;
+    height: 60px;
+  }
+
+
+  :host>>>p-sorticon {
+    vertical-align: bottom;
+    text-align-last: justify;
+  }
+
+  .p-column-filter {
+    width: 100%;
+  }
+
+  :host>>>.p-datatable .p-datatable-thead>tr>th {
+    vertical-align: middle;
+    text-align: center;
+    height: max-content;
+    border: 1px solid #c8c8c8 !important;
+    border-bottom:.13rem solid #697882 !important;
+  }
+  :host >>>.p-datatable table {
+    border: .13rem solid #697882;
+}
+
+
+  :host>>>.p-datatable .p-datatable-tbody>tr>td:first-child {
+    vertical-align: middle;
+  }
+
+  :host>>>.p-datatable .p-datatable-thead>tr>th:last-child {
+    text-align: center !important;
+  }
+
+  :host>>>p-sorticon {
+    vertical-align: bottom;
+    text-align-last: justify;
+  }
+
+  :host>>>.p-datatable .p-datatable-header {
+    background: none;
+    border: 0px solid #ffff;
+  }
+
+  :host>>>.p-sortable-column-icon .pi .pi-fw .pi-sort-alt {
+    font-weight: smaller !important;
+  }
+
+  .editclass {
+    background-color: white;
+    border: none;
+  }
+
+  :host>>>  tfoot, tr, td, th {
+    font-size: 11px;
+  }
+
+  :host>>> .p-datatable-thead {
+    font-size: 11px;
+    border: .5px solid;
+    white-space: normal;
+  }
+
+  :host>>> .p-datatable-tbody {
+    font-size: 11px;
+    border:.5px solid;
+  }
+  .custom-btn-style {
+    width: 172px !important;
+    outline-color: white;
+    border: white;
+    box-shadow: 2px 2px 2px 2px #ccc;
+    border-radius: 0px 0px 6px 6px;
+    color: black;
+    border-top: 0px solid white !important;
+    font-size: 12px !important;
+    height: 33px !important;
+    padding-top: 6px;
+  }
+
+  :host>>>.pi-clone:before {
+    color: #ffba01;
+  }
+
+  :host>>>.p-datatable .p-datatable-tbody>tr>td {
+   text-align: center;
+    border: 1px solid #c8c8c8 !important;
+    /* border: none !important; */
+    border-bottom: 1px solid #c8c8c8 !important;
+    border-width: 1px;
+    padding: 1px 5px  2px!important;
+  }
+
+  :host>>>.p-datatable .p-datatable-tbody>tr {
+    height: 35px !important;
+    background: #ffffff;
+    color: #333333;
+    transition: background-color 0.2s, box-shadow 0.2s;
+    outline-color: #8dcdff;
+  }
+
+  .selectionStyle {
+    background-color: #f49c00;
+  }
+  /*Start--to avoid blue-color while sorting */
+
+  :host>>>.p-datatable .p-sortable-column.p-highlight {
+    color: black;
+    background: transparent;
+  }
+
+  :host>>>.p-datatable .p-sortable-column:hover {
+    color: black;
+    border-color: transparent;
+  }
+
+  :host>>>.p-datatable .p-sortable-column .p-sortable-column-icon {
+    color: transparent;
+    margin-left: 0.5rem;
+  }
+
+  :host>>>.p-datatable .p-sortable-column.p-highlight {
+    background: transparent;
+    color: black;
+  }
+
+  :host>>>.p-datatable .p-sortable-column.p-highlight .p-sortable-column-icon {
+    color: black;
+  }
+
+  :host>>>.p-datatable .p-sortable-column {
+    outline-color: transparent;
+  }
+
+  :host>>>.p-datatable .p-sortable-column.p-highlight:hover {
+    background: transparent;
+    color: black;
+  }
+
+  :host>>>.p-datatable .p-sortable-column.p-highlight:hover .p-sortable-column-icon {
+    color: black;
+  }
+
+  :host>>>.p-datatable .p-sortable-column:focus {
+    box-shadow: inset 0 0 0 0.2rem transparent;
+    outline: 0 none;
+  }
+
+  :host>>>.p-datatable .p-sortable-column:not(.p-highlight):hover {
+    background: transparent;
+  }
+
+  /*End-- to avoid blue-color while sorting */
+
+  :host>>>.p-button.p-button-text {
+    color: rgb(244, 156, 0);
+    border-color: transparent;
+  }
+
+  :host>>>.p-link:focus {
+    outline: 0 none;
+    outline-offset: 0;
+    box-shadow: 0 0 0 0.1rem rgb(244, 156, 0);
+  }
+  /* paginator color */
+
+  :host>>>.p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+    background: rgb(244, 156, 0);
+    border-color: rgb(244, 156, 0);
+    color: #ffffff;
+  }
+
+  .dateInput {
+    width: 130px !important;
+  }
+
+  :host>>>.p-inputtext.p-error, .p-inputtext.p-invalid, .p-inputtext.ng-dirty.ng-invalid {
+    border-color: #333333;
+    ;
+  }
+
+  .help-block {
+    font-size: 10px;
+    color: red;
+    margin-left: 47%;
+    width: 100%;
+    font-family: 'Verdana'
+  }
+
+  .searchResultText {
+      font-size: 13px!important;
+      font-family: 'Segoe UI'!important;
+      color: #0b9ad3!important;
+      font-weight: 700!important;
+  }
+
+
+  /* :host >>> td .ng-star-inserted {
+    padding: 0px;
+  } */
+  :host >>> .p-inputnumber-input {
+    width: 100px;
+    height: 24px;
+    font-size: 11px;
+  }
+  .edittextbox{
+    font-size: 11px;
+    height: 25px;
+    width: 87%;
+    text-align: center;
+    font-family: verdana;
+  }
+  :host >>>.p-inputnumber-input {
+    width: 100px;
+    height: 24px;
+    text-align: center;
+    margin-top: 7px;
+    font-size: 11px;
+}
+.btn-action{
+  border: 1px solid #f49c00;
+  background:white;
+  color: #f49c00;
+  margin-left: 13px;
+  height: 29px;
+  width: 102px;
+  font-family: verdana;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 4px;
+  margin-right: 49px !important;
+}
+.btn-storage{
+  border: 1px solid #f49c00;
+  background:#f49c00;
+  color: white;
+  margin-left: 13px;
+  height: 29px;
+  width: 102px;
+  font-family: verdana;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 4px;
+  margin-right: 49px !important;
+}
+:host >>> .p-datatable-scrollable-header-box {
+  padding-right: 0px !important;
+}
+
+:host >>> .CustomButton {
+  padding: 0;
+  height: 26px;
+  color: #f49c00  !important;
+  background: #fff;
+  border-color: #a6a6a6;
+  margin-top: 1px;
+  border: none !important;
+}
+.pending{
+  background: rgb(247, 247, 4);
+  color:black
+}
+.green{
+  background: rgb(3, 165, 3);
+  color:black
+}
+ul {
+  list-style-type: none;
+  font-size: 11px;
+  font-weight: 600;
+}
+.popUpText{
+  font-size: 11px;
+    font-family: verdana;
+    /* margin-left: 20px; */
+}
+.customContainer{
+  width: 51%;
+  margin-top: 3%;
+  display: -webkit-inline-box;
+}
+.inputClass{
+  width:10%;
+  font-weight: 600;
+  font-size:12px;
+  font-family:Verdana, Geneva, Tahoma, sans-serif
+}
+:host>>>.p-dialog .p-dialog-header {
+  background: #f49c00;
+  color: white;
+  padding: 0.571rem 1rem;
+}
+
+:host>>>.p-dialog .p-dialog-header .p-dialog-header-icon {
+  color: white;
+}
+
+:host>>>.p-dialog .p-dialog-content {
+  background: #ffffff;
+  color: #333333;
+  padding: 0.571rem 1rem;
+}
+:host >>>.p-dialog.p-confirm-dialog .p-confirm-dialog-message {
+  margin-left: 1rem;
+  font-size: 11px;
+  font-family: verdana;
+  font-weight: 600;
+  margin-right: 1rem;
+}
+:host >>>.p-dialog {
+  -ms-flex-direction: column;
+  -ms-transform: scale(1);
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+  max-height: 96%;
+  position: relative;
+  width: 36%;
+  transform: scale(1);
+}
+.custom-style {
+  width: 172px !important;
+  outline-color: white;
+  border: white;
+  box-shadow: 2px 2px 2px 2px #ccc;
+  border-radius: 0px 0px 6px 6px;
+  color: black;
+  border-top: 0px solid white !important;
+  font-size: 12px !important;
+  height: 33px !important;
+  padding-top: 6px;
+  /* padding-top: 6px; */
+  }
+  .btn-customize {
+    color: rgb(0, 0, 0);
+    background-color: white;
+    width: 7rem;
+    font-weight: bold;
+    font-family: 'Verdana';
+    font-size: 13px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid rgb(214, 212, 212);
+    box-shadow: 2px 5px rgb(243, 242, 242);
+  }
+  
+a.pointer{
+cursor: pointer;
+}
+.btn-action-excel{
+  border: 1px solid #f49c00;
+  background: white;
+  color: #f49c00;
+  margin-left: 3px;
+  height: 26px;
+  width: 143px;
+  padding: 2px;
+  margin-top: 1px;
+  font-family: verdana;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.selectAllCheckbox{
+margin-top: 2px;
+}
+@media (max-width: 767px) {/* xs or col */
+  .development{
+    color: orange;
+    }
+    .labelQC {
+      margin-bottom: 0px!important;
+    }
+    .labelCategory {
+      padding-top: 0px!important;
+    }
+    .labelDescription {
+      padding-top: 0px!important;
+    }
+    .buttonClass {
+      margin-top: 6px;
+    }
+    .commentClass {
+      padding-left: 1px!important;
+      width: 100%;
+    }
+    .defectHeadingWidth {
+      width:45%;
+    }
+}
+@media (min-width: 768px) and (max-width: 991px) {/* sm */
+  .development{
+    color: green;
+    }
+    .labelQC {
+      margin-bottom: 0px!important;
+      padding-left: 1%!important;
+    }
+    .labelCategory {
+      padding-top: 0px!important;
+    }
+    .labelDescription {
+      padding-top: 0px!important;
+    }
+    .buttonClass {
+      margin-top: 6px;
+    }
+    .commentClass {
+      padding-left: 1px!important;
+      width: 100%;
+    }
+    .p-datatable.p-datatable-responsive .p-datatable-tbody>tr>td {
+      border: 0;
+      clear: left;
+      display: block;
+      float: left;
+      text-align: left;
+      width: 100%;
+  }
+  .defectHeadingWidth {
+    width:47.5%;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) { /* md */
+  .development{
+    color: blue;
+    }
+    .labelQC {
+      margin-bottom: 0px!important;
+      padding-left: 0px!important;
+    }
+    .labelCategory {
+      padding-top: 0px!important;
+      padding-left: 1px!important;
+    }
+    .labelDescription {
+      padding-top: 0px!important;
+    }
+    .buttonClass {
+      margin-top: 6px;
+    }
+    .commentClass {
+      padding-left: 1px!important;
+      width: 100%;
+    }
+    .defectHeadingWidth {
+      width:48%;
+    }
+}
+@media (min-width: 1200px) { /* lg or xl */
+  .development{
+    color: red;
+    }
+  .labelQC {
+    margin-bottom: 0px!important;
+    padding-left: 0px!important;
+  }
+  .labelCategory {
+    padding-top: 0px!important;
+    padding-left: 1px!important;
+  }
+  .labelDescription {
+    padding-top: 0px!important;
+  }
+  .buttonClass {
+    margin-top: 6px;
+  }
+  .commentClass {
+    padding-left: 1px!important;
+    width: 100%;
+  }
+  .defectHeadingWidth {
+    width:48.5%;
+  }
+}
+:host>>>.btn-cancel-pallets {
+  border: 1px solid #f49c00;
+  background: white;
+  color: #f49c00;
+  height: 26px;
+  width: 85px;
+  font-family: verdana;
+  font-weight: 600;
+  font-size: 12px;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+:host>>>.pageHeader {
+  font-size: 1rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 600;
+}
+:host>>>.pageSubHeader {
+  font-size: 1rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 100;
+}
+:host>>>button:focus {
+  outline: none!important;
+  outline: none!important;
+}
+
+.btn-download {
+  border: 1px solid #f49c00;
+  background: #ffffff;
+  color: #f49c00;
+  border-radius: 5px;
+  width: 85px!important;
+  font-weight: bold;
+  margin-top: 1px;
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 13px;
+  height: 29px;
+ }
+ :host>>>.p-inputtext {
+   font-size: 11px;
+ }

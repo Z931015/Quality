@@ -1,0 +1,66 @@
+<div class="container">
+
+  <div class="row" style="margin-top: 2%;">
+    <div class="col-lg-3 col-sm-8">
+      <div class="heading">Pallet Details</div>
+    </div>
+    <div class="col-md-2" style="float: left;position: absolute;right: 0;">
+      <button type="button" label="Back" class="backButton"
+        (click)="back($event)">Back</button>
+    </div>
+  </div><br>
+
+  <div class="row">
+    <div class="col-sm-6 col-lg-8">
+      <div class="row">
+        <div class="col-sm-10">
+          <label class="labelHeading">Material
+          </label> <br>
+          <input type="text" [(ngModel)]="materail" name="source" class="form-control readOnly" readonly />
+        </div>
+      </div>
+    </div>
+  </div><br>
+
+
+  <div class="p-col-12 msgBar">
+    <div>
+      <p-message severity="error" text={{msg}} *ngIf="error_message"></p-message>
+    </div>
+  </div>
+  <div class="row">
+    <div class="card">
+      <p-table [columns]="cols" [value]="rowDataPart" [scrollable]="true" [rows]="20" scrollHeight="300px"
+        [virtualScroll]="true" [virtualRowHeight]="34">
+        <ng-template pTemplate="header" let-columns>
+          <tr>
+            <th *ngFor="let col of columns">
+              {{col.header}}
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-columns="columns">
+          <tr style="height:34px">
+            <td *ngFor="let col of columns">
+              {{rowData[col.field]}}
+            </td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+          <div class="md-col-12 summary">
+            Total Rows : {{totalRecords}}
+          </div>
+        </ng-template>
+      </p-table>
+    </div>
+  </div><br>
+
+  <div class="row">
+    <div class="col-md-12">
+      <label class="labelHeading">Status
+      </label> <br>
+      <textarea disabled class="textarea" [rows]="2" [(ngModel)]="status" [cols]="60" pInputTextarea
+        autoResize="autoResize"></textarea>
+    </div>
+  </div><br>
+</div>

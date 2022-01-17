@@ -1,0 +1,163 @@
+<div *ngIf="!showPrintPreview" class="container-fluid p-mt-2">
+  <div class="p-md-12 pageHeader">
+    PWM Combine Pallets
+  </div>
+
+  <div *ngIf="success || error" class="p-md-12"
+    style="font-family: Verdana, Geneva, Tahoma, sans-serif;font-weight: bold;">
+    <p-message severity="success" text={{message}} *ngIf="success"></p-message>
+    <p-message severity="error" text={{message}} styleClass="p-mr-2" *ngIf="error"></p-message>
+  </div>
+
+  <div class="p-d-flex p-flex-column p-flex-md-row">
+    <div class="p-md-3">
+      <label>Scan or Enter a Pallet:</label> <br />
+      <p-autoComplete [(ngModel)]="palletId" [suggestions]="filteredPalletId" (completeMethod)="searchPallet($event)"
+        emptyMessage='No Records found' (onSelect)="onSelectPallet($event)" [dropdown]="true"
+        [inputStyle]="{'border-right': 'none'}" field="palletId">
+        <ng-template pTemplate="header">
+          <div class="col-md-12">
+            <span>Pallet ID</span>
+            <span style="padding-left: 10px">Fake ID</span>
+          </div>
+        </ng-template>
+        <ng-template let-pallet pTemplate="item">
+            <div class="col-md-12">
+            <span>{{pallet.palletId}}</span>
+            <span style="padding-left: 10px">{{pallet.fakeId}}</span>
+          </div>
+        </ng-template>
+      </p-autoComplete>
+    </div>
+    <div class="p-md-3">
+      <a *ngIf="!showMaterialLabel" class="link" (click)="onMaterialClick()">Material:</a>
+      <label *ngIf="showMaterialLabel">Material:</label>
+      <br />
+      <input id="material" type="text" pInputText [(ngModel)]="material" disabled>
+    </div>
+
+    <div class="p-d-flex  justify-content-end p-md-6 mt-3">
+      <button type="button" class="scanButton p-mr-2" [disabled]="!scanEnabled" (click)="scanPallet()">Scan /
+        Add</button>
+      <button type="button" class="excelButton" [attr.data-auth401]="actionListAttribute.combineSave"
+        [disabled]="!(actionListAttribute.combineSave && printEnabled)" (click)="printPalletTicket()">Print Pallet
+        List</button>
+    </div>
+  </div>
+  <hr>
+  <div class="p-d-flex p-flex-column p-flex-md-row" *ngIf="showScannedPallets">
+    <div class="p-md-12">
+      <p-table [value]="palletDetailsList" [columns]="cols" [filterDelay]="0" [autoLayout]="true" [responsive]="true"
+        [paginator]="isPagination" [rows]="recordLoaded" [totalRecords]="totalRecords" dataKey="palletId">
+        <ng-template pTemplate="header" let-columns>
+          <tr>
+            <th style="text-align: center;">Action</th>
+            <th *ngFor="let col of columns">
+              <span pSortableColumn="{{col.field}}"> {{col.header}}
+                <p-sortIcon *ngIf="col.sort" field="{{col.header}}"></p-sortIcon>
+              </span>
+            </th>
+          </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-rowData let-columns="columns" let-editing="editing" let-ri="rowIndex">
+          <tr>
+            <td style="text-align: center;">
+              <input [pTooltip]="'Delete'" *ngIf="!editing" tooltipStyleClass="linkTooltip" type="image"
+                (click)="onDeleteClick(ri)" class="icons" tooltipPosition="bottom"
+                src="../../../assets/images/trash.png">
+            </td>
+            <td *ngFor="let col of columns">
+              <span *ngIf="col.field !== 'manufacturingDateTime'">{{rowData[col.field]}}</span>
+              <span *ngIf="col.field === 'manufacturingDateTime'">{{rowData[col.field] | date :
+                'MM/dd/yyyy h:mm:ss a'}}</span>
+            </td>
+          </tr>
+        </ng-template>
+
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td [attr.colspan]="10">No records found</td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+          <div class="md-col-12" style="text-align: center;font-size: small;font-weight: 600;">
+            Total Records: {{totalRecords}}
+          </div>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>
+<div *ngIf="showPrintPreview" class="container-fluid">
+  <div class="p-col-12 pageHeader">
+    Print Pallet Tickets
+  </div>
+  <div style="margin-left: 1% !important;font-family: Verdana, Geneva, Tahoma, sans-serif;font-weight: bold;">
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col-12 p-md-6 p-lg-2 p-xl-2">
+        <div class="p-fluid p-formgrid p-grid">
+          <label class="reportType">Print Quantity:</label>
+          <input pInputText type="number" pInputText [(ngModel)]="quantity" [min]="1"
+            (keypress)="keyPressNumbers($event)" (keydown)="keydown($event,'quantity')">
+        </div><br>
+        <div class="p-fluid p-formgrid p-grid">
+          <label class="reportType">Max Print Quantity:</label>
+          <input pInputText type="text" class="p-column-filter" style="white-space: none !important;"
+            [attr.disabled]="true">
+        </div><br>
+        <div class="p-fluid p-formgrid p-grid">
+          <p-checkbox [(ngModel)]="dateSelected" [binary]="true" class="checkBoxPadding"></p-checkbox>
+          <label class="reportType">Manufactured date:</label>
+        </div><br>
+        <div class="p-fluid p-formgrid p-grid">
+          <label class="reportType">Date:</label>
+          <p-calendar [showIcon]="true" [monthNavigator]="true" [yearNavigator]="true" [showTime]="true"
+            [(ngModel)]="selectedDate" hourFormat="24" [readonlyInput]="false" yearRange="1990:2100"
+            placeholder="MM/DD/YYYY HH:MM" [maxDate]="maxDate" [minDate]="minDate" [disabled]="!dateSelected"
+            [touchUI]="false" [inputStyle]="{'border-right': 'none'}">
+          </p-calendar>
+        </div><br>
+      </div>
+      <div class="p-field p-col-1 p-md-1 p-lg-1 p-xl-1"></div>
+      <div class="p-field p-col-12 p-md-12 p-lg-8 p-xl-8">
+      <div class="p-fluid p-formgrid p-grid pdf-container pdfDocument" style="justify-content: center;">
+        <pdf-viewer [src]="pdfByte" [original-size]="false" [autoresize]="true" style="display: block;"
+        (after-load-complete)="handlePdfLoaded($event)"
+        >
+        </pdf-viewer>
+      </div>
+    </div>
+    </div>
+  </div>
+  <div class="p-field p-col-12 buttonClass">
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-col-12">
+        <div style="float: right;">
+          <button class="p-mr-2 resetButton" (click)="showPrintPreview = false">Back</button>
+          <button class="primary-btn" (click)="onPrint()">Print</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p-dialog [(visible)]="showCombineMsgPopUp" [style]="{width: '45vw'}" [modal]="true">
+  <ng-template pTemplate="header">
+    PWM Message
+  </ng-template>
+  <span class="headerStyle">
+    {{displayWarningMsg}}
+  </span>
+
+  <div class="col-md-12 text-right">
+    <div class="col-md-3 mr-2 d-inline">
+      <button pButton type="button" label="Ok" (click)="showCombineMsgPopUp=false" style="width: 15%; background: #ED990B;
+          color: #fff;
+          border-color: #ED990B;" class="btn-style p-button-raised p-button-warning"></button>
+    </div>
+  </div>
+
+</p-dialog>
+<quality-assurance-pwm-spinner></quality-assurance-pwm-spinner>
+<quality-assurance-pwm-dialog></quality-assurance-pwm-dialog>
